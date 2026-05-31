@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MoveUp, MapPin } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
@@ -384,6 +384,45 @@ function DevisSection() {
   const [selected, setSelected] = useState<PropertyType>("Appartement");
   const [windows, setWindows] = useState("1 à 5 fenêtres");
   const [frequency, setFrequency] = useState("Intervention unique");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [department, setDepartment] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const message = [
+      "Bonjour LVTV Clean Service,",
+      "",
+      "Je souhaite demander un devis pour un nettoyage de vitres.",
+      "",
+      "Informations client :",
+      `- Nom : ${lastName}`,
+      `- Prénom : ${firstName}`,
+      `- Téléphone : ${phoneNumber}`,
+      `- Adresse : ${address}`,
+      `- Ville : ${city}`,
+      `- Code postal : ${postalCode}`,
+      `- Département : ${department}`,
+      "",
+      "Détails de la demande :",
+      `- Type de bien : ${selected}`,
+      `- Nombre de fenêtres : ${windows}`,
+      `- Fréquence souhaitée : ${frequency}`,
+      "",
+      "Merci de me recontacter pour un devis.",
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/33609702019?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
 
   return (
     <section id="devis" className="px-6 py-20 bg-white">
@@ -391,56 +430,103 @@ function DevisSection() {
         <div className="bg-white rounded-2xl border border-gray-100 shadow-lg p-8 md:p-12">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-2">Estimez votre nettoyage</h2>
-            <p className="text-gray-500 text-sm">Obtenez un devis instantané en 3 clics</p>
+            <p className="text-gray-500 text-sm">Remplissez le formulaire, votre demande s'ouvrira sur WhatsApp.</p>
           </div>
-          <div className="mb-7">
-            <p className="text-sm font-medium text-gray-700 mb-3">Type de bien</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {propertyTypes.map(({ label, icon }) => (
-                <button
-                  key={label}
-                  onClick={() => setSelected(label)}
-                  className={`flex flex-col items-center gap-2 py-4 px-3 rounded-xl border text-sm font-medium transition-all cursor-pointer ${
-                    selected === label
-                      ? "border-teal-400 bg-teal-50 text-teal-600"
-                      : "border-gray-200 text-gray-500 hover:border-gray-300 hover:bg-gray-50"
-                  }`}
-                >
-                  {icon}{label}
-                </button>
-              ))}
+          <form onSubmit={handleSubmit}>
+            <div className="grid sm:grid-cols-2 gap-5 mb-7">
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="first-name">Prénom</label>
+                <input id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="Votre prénom" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="last-name">Nom</label>
+                <input id="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)} required
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="Votre nom" />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="address">Adresse</label>
+                <input id="address" value={address} onChange={(e) => setAddress(e.target.value)} required
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="Rue, numéro, complément" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="city">Ville</label>
+                <input id="city" value={city} onChange={(e) => setCity(e.target.value)} required
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="Votre ville" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="postal-code">Code postal</label>
+                <input id="postal-code" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} required inputMode="numeric"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="75000" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="department">Département</label>
+                <input id="department" value={department} onChange={(e) => setDepartment(e.target.value)} required
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="Ex : Moselle, Nord, Luxembourg" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="phone-number">Numéro de téléphone</label>
+                <input id="phone-number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required type="tel"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
+                  placeholder="06 00 00 00 00" />
+              </div>
             </div>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-5 mb-8">
-            <div>
-              <label className="text-sm font-medium text-gray-700 block mb-2">Nombre de fenêtres (approx.)</label>
-              <select value={windows} onChange={(e) => setWindows(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer appearance-auto">
-                <option>1 à 5 fenêtres</option>
-                <option>6 à 10 fenêtres</option>
-                <option>11 à 20 fenêtres</option>
-                <option>Plus de 20 fenêtres</option>
-              </select>
+            <div className="mb-7">
+              <p className="text-sm font-medium text-gray-700 mb-3">Type de bien</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {propertyTypes.map(({ label, icon }) => (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={() => setSelected(label)}
+                    className={`flex flex-col items-center gap-2 py-4 px-3 rounded-xl border text-sm font-medium transition-all cursor-pointer ${
+                      selected === label
+                        ? "border-teal-400 bg-teal-50 text-teal-600"
+                        : "border-gray-200 text-gray-500 hover:border-gray-300 hover:bg-gray-50"
+                    }`}
+                  >
+                    {icon}{label}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700 block mb-2">Fréquence souhaitée</label>
-              <select value={frequency} onChange={(e) => setFrequency(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer appearance-auto">
-                <option>Intervention unique</option>
-                <option>Mensuelle</option>
-                <option>Bimensuelle</option>
-                <option>Trimestrielle</option>
-              </select>
+            <div className="grid sm:grid-cols-2 gap-5 mb-8">
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2">Nombre de fenêtres (approx.)</label>
+                <select value={windows} onChange={(e) => setWindows(e.target.value)}
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer appearance-auto">
+                  <option>1 à 5 fenêtres</option>
+                  <option>6 à 10 fenêtres</option>
+                  <option>11 à 20 fenêtres</option>
+                  <option>Plus de 20 fenêtres</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700 block mb-2">Fréquence souhaitée</label>
+                <select value={frequency} onChange={(e) => setFrequency(e.target.value)}
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer appearance-auto">
+                  <option>Intervention unique</option>
+                  <option>Mensuelle</option>
+                  <option>Bimensuelle</option>
+                  <option>Trimestrielle</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="flex items-center gap-2 text-sm text-gray-400">
-              <Lock className="w-4 h-4" /> Données sécurisées
-            </span>
-            <button className="w-full sm:w-auto bg-gray-900 text-white text-sm font-semibold px-8 py-3 rounded-xl hover:bg-gray-800 transition-colors cursor-pointer">
-              Voir mon estimation
-            </button>
-          </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="flex items-center gap-2 text-sm text-gray-400">
+                <Lock className="w-4 h-4" /> Données sécurisées
+              </span>
+              <button type="submit" className="w-full sm:w-auto bg-gray-900 text-white text-sm font-semibold px-8 py-3 rounded-xl hover:bg-gray-800 transition-colors cursor-pointer">
+                Demander mon devis sur WhatsApp
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
