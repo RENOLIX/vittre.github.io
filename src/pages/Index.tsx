@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MoveUp, MapPin } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
@@ -159,48 +159,6 @@ function HeroSection() {
 }
 
 function WindowShowcase() {
-  const imageClipRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const updateImagePosition = () => {
-      frame = 0;
-      const container = imageClipRef.current;
-      const image = imageRef.current;
-      if (!container || !image) return;
-
-      const rect = container.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-
-      image.style.opacity =
-        rect.bottom <= 0 || rect.top >= viewportHeight ? "0" : "1";
-      image.style.clipPath = `inset(${Math.max(rect.top, 0)}px ${Math.max(
-        viewportWidth - rect.right,
-        0,
-      )}px ${Math.max(viewportHeight - rect.bottom, 0)}px ${Math.max(
-        rect.left,
-        0,
-      )}px)`;
-    };
-
-    const scheduleUpdate = () => {
-      if (!frame) frame = window.requestAnimationFrame(updateImagePosition);
-    };
-
-    scheduleUpdate();
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", scheduleUpdate);
-
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", scheduleUpdate);
-      window.removeEventListener("resize", scheduleUpdate);
-    };
-  }, []);
-
   return (
     <section className="px-6 pb-16">
       <div className="max-w-4xl mx-auto">
@@ -210,25 +168,17 @@ function WindowShowcase() {
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
-          <div
-            ref={imageClipRef}
-            className="relative h-56 w-full overflow-hidden bg-gray-100 sm:h-80"
-            role="img"
-            aria-label="Résultat de nettoyage de vitres"
-          >
-            <img
-              ref={imageRef}
-              src={`${import.meta.env.BASE_URL}images/showcase/original-window-showcase.png`}
-              alt=""
-              className="pointer-events-none fixed left-0 top-0 z-0 h-screen w-screen max-w-none object-cover object-center opacity-0 will-change-[clip-path]"
-            />
-          </div>
+          <div className="w-full h-80" style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/original-window-showcase.png)`,
+            backgroundAttachment: "fixed",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }} />
         </div>
       </div>
     </section>
   );
 }
-
 function SloganBanner() {
   return (
     <section className="py-14 px-6">
