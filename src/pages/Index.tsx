@@ -159,7 +159,7 @@ function HeroSection() {
 }
 
 function WindowShowcase() {
-  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const imageClipRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -167,11 +167,23 @@ function WindowShowcase() {
 
     const updateImagePosition = () => {
       frame = 0;
-      const container = imageContainerRef.current;
+      const container = imageClipRef.current;
       const image = imageRef.current;
       if (!container || !image) return;
 
-      image.style.transform = `translate3d(0, ${-container.getBoundingClientRect().top}px, 0)`;
+      const rect = container.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      image.style.opacity =
+        rect.bottom <= 0 || rect.top >= viewportHeight ? "0" : "1";
+      image.style.clipPath = `inset(${Math.max(rect.top, 0)}px ${Math.max(
+        viewportWidth - rect.right,
+        0,
+      )}px ${Math.max(viewportHeight - rect.bottom, 0)}px ${Math.max(
+        rect.left,
+        0,
+      )}px)`;
     };
 
     const scheduleUpdate = () => {
@@ -199,8 +211,8 @@ function WindowShowcase() {
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
           <div
-            ref={imageContainerRef}
-            className="relative h-56 w-full overflow-hidden sm:h-80"
+            ref={imageClipRef}
+            className="relative h-56 w-full overflow-hidden bg-gray-100 sm:h-80"
             role="img"
             aria-label="Résultat de nettoyage de vitres"
           >
@@ -208,7 +220,7 @@ function WindowShowcase() {
               ref={imageRef}
               src={`${import.meta.env.BASE_URL}images/showcase/original-window-showcase.png`}
               alt=""
-              className="pointer-events-none absolute left-0 top-0 h-screen w-full max-w-none object-cover object-center will-change-transform"
+              className="pointer-events-none fixed left-0 top-0 z-0 h-screen w-screen max-w-none object-cover object-center opacity-0 will-change-[clip-path]"
             />
           </div>
         </div>
