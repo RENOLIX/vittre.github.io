@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MoveUp, MapPin } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
@@ -159,6 +159,36 @@ function HeroSection() {
 }
 
 function WindowShowcase() {
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateImagePosition = () => {
+      frame = 0;
+      const container = imageContainerRef.current;
+      const image = imageRef.current;
+      if (!container || !image) return;
+
+      image.style.transform = `translate3d(0, ${-container.getBoundingClientRect().top}px, 0)`;
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateImagePosition);
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, []);
+
   return (
     <section className="px-6 pb-16">
       <div className="max-w-4xl mx-auto">
@@ -169,13 +199,18 @@ function WindowShowcase() {
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
           <div
-            className="window-showcase-image h-56 w-full sm:h-80"
+            ref={imageContainerRef}
+            className="relative h-56 w-full overflow-hidden sm:h-80"
             role="img"
             aria-label="Résultat de nettoyage de vitres"
-            style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/original-window-showcase.png)`,
-            }}
-          />
+          >
+            <img
+              ref={imageRef}
+              src={`${import.meta.env.BASE_URL}images/showcase/original-window-showcase.png`}
+              alt=""
+              className="pointer-events-none absolute left-0 top-0 h-screen w-full max-w-none object-cover object-center will-change-transform"
+            />
+          </div>
         </div>
       </div>
     </section>
