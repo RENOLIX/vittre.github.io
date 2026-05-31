@@ -168,10 +168,13 @@ function WindowShowcase() {
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
-          <img
-            src={`${import.meta.env.BASE_URL}images/realisations/realisation-03.jpg`}
-            alt="Résultat de nettoyage de vitres"
-            className="h-56 w-full object-cover object-center sm:h-80"
+          <div
+            className="window-showcase-image h-56 w-full sm:h-80"
+            role="img"
+            aria-label="Résultat de nettoyage de vitres"
+            style={{
+              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/original-window-showcase.png)`,
+            }}
           />
         </div>
       </div>

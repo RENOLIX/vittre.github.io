@@ -69,6 +69,19 @@
   scrollbar-width: none;
 }
 
+.window-showcase-image {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 767px) {
+  .window-showcase-image {
+    background-attachment: scroll;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
