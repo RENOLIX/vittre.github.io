@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MoveUp } from "lucide-react";
+import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MoveUp, MapPin } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
 
 export default function Index() {
@@ -24,6 +24,7 @@ const menuItems = [
   { label: "Services", ariaLabel: "Voir les services", link: "#services" },
   { label: "Méthode", ariaLabel: "Notre méthode", link: "#methode" },
   { label: "Avis", ariaLabel: "Avis clients", link: "#avis" },
+  { label: "À propos", ariaLabel: "À propos de Sami", link: `${import.meta.env.BASE_URL}about` },
   { label: "Devis", ariaLabel: "Devis gratuit", link: "#devis" },
 ];
 
@@ -43,6 +44,7 @@ function Navbar() {
             <a href="#services" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Services</a>
             <a href="#methode" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Notre Méthode</a>
             <a href="#avis" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Avis</a>
+            <Link to="/about" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">À propos</Link>
           </div>
           <div className="flex items-center gap-4">
             <a href="tel:+33609702019" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer hidden md:block">
@@ -76,26 +78,32 @@ function Navbar() {
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
-      <div className="w-7 h-7 rounded-full border-2 border-teal-400 flex items-center justify-center">
-        <div className="w-2 h-2 rounded-full bg-teal-400"></div>
-      </div>
-      <span className="font-semibold text-gray-900 text-lg tracking-tight">Éclat Pur</span>
-    </div>
+    <Link to="/" aria-label="LVTV Clean Service">
+      <img
+        src={`${import.meta.env.BASE_URL}images/brand/lvtv-clean-service-logo.png`}
+        alt="LVTV Clean Service"
+        className="h-12 w-auto object-contain"
+      />
+    </Link>
   );
 }
 
 function HeroSection() {
-  const [postalCode, setPostalCode] = useState("");
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Full-screen background image */}
-      <div className="absolute inset-0" style={{
-        backgroundImage: "url(https://images.unsplash.com/photo-1512479373983-bd28a541041b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1920)",
-        backgroundAttachment: "fixed",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}>
+      <div className="absolute inset-0">
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet={`${import.meta.env.BASE_URL}images/hero/hero-mobile.jpg`}
+          />
+          <img
+            src={`${import.meta.env.BASE_URL}images/hero/hero-desktop.png`}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/30" />
       </div>
 
@@ -118,18 +126,12 @@ function HeroSection() {
             Nettoyage professionnel pour particuliers et professionnels. Résultat sans traces, garanti.
           </p>
 
-          {/* CTA row */}
+          {/* Availability and CTA */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
-            <input
-              type="text"
-              placeholder="Votre code postal..."
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-              className="w-full sm:w-56 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400 backdrop-blur-sm"
-            />
-            <button className="bg-teal-400 text-gray-900 text-sm font-bold px-7 py-3.5 rounded-xl hover:bg-teal-300 transition-colors cursor-pointer whitespace-nowrap">
-              Vérifier ma zone
-            </button>
+            <div className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white backdrop-blur-sm">
+              <MapPin className="h-4 w-4 text-teal-400" />
+              Disponible en France et au Luxembourg
+            </div>
             <a href="#devis" className="text-center border border-white/20 text-white text-sm font-medium px-7 py-3.5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap">
               Devis gratuit
             </a>
@@ -189,7 +191,7 @@ function SloganBanner() {
           {'"Des vitres propres, c\'est une meilleure luminosité !'}
         </p>
         <div className="mt-4 w-16 h-0.5 bg-teal-400 mx-auto" />
-        <p className="text-gray-500 text-sm mt-3 font-medium tracking-widest uppercase">Sami — Éclat Pur</p>
+        <p className="text-gray-500 text-sm mt-3 font-medium tracking-widest uppercase">Sami — LVTV Clean Service</p>
       </div>
     </section>
   );
@@ -551,7 +553,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-gray-100 gap-4">
-          <p className="text-xs text-gray-400">© {year} Éclat Pur — Sami Djennane. Tous droits réservés.</p>
+          <p className="text-xs text-gray-400">© {year} LVTV Clean Service — Sami Djennane. Tous droits réservés.</p>
           <div className="flex items-center gap-4">
             <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="Instagram">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>

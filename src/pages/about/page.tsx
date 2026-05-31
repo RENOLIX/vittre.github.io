@@ -3,31 +3,32 @@ import { ArrowLeft, Check, MapPin, Clock, Phone, Mail, Star } from "lucide-react
 
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
-      <div className="w-7 h-7 rounded-full border-2 border-teal-400 flex items-center justify-center">
-        <div className="w-2 h-2 rounded-full bg-teal-400"></div>
-      </div>
-      <span className="font-semibold text-gray-900 text-lg tracking-tight">Éclat Pur</span>
-    </div>
+    <Link to="/" aria-label="LVTV Clean Service">
+      <img
+        src={`${import.meta.env.BASE_URL}images/brand/lvtv-clean-service-logo.png`}
+        alt="LVTV Clean Service"
+        className="h-12 w-auto object-contain"
+      />
+    </Link>
   );
 }
 
 const photos = [
   {
-    url: "https://images.unsplash.com/photo-1746905205773-3ea50c8cd808?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-    label: "Nettoyage professionnel",
+    url: `${import.meta.env.BASE_URL}images/realisations/realisation-01.jpg`,
+    label: "Nettoyage professionnel en hauteur",
   },
   {
-    url: "https://images.unsplash.com/photo-1775654063422-54e0a71578ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-    label: "Travail en hauteur",
+    url: `${import.meta.env.BASE_URL}images/realisations/realisation-02.jpg`,
+    label: "Nettoyage de façade vitrée",
   },
   {
-    url: "https://images.unsplash.com/photo-1561236478-a10a7659d498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-    label: "Façades vitrées",
+    url: `${import.meta.env.BASE_URL}images/realisations/realisation-03.jpg`,
+    label: "Vitres impeccables",
   },
   {
-    url: "https://images.unsplash.com/photo-1758836113725-a1b082c622bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-    label: "Interventions extérieures",
+    url: `${import.meta.env.BASE_URL}images/realisations/realisation-04.jpg`,
+    label: "Nettoyage à la perche",
   },
   {
     url: "https://hercules-cdn.com/file_EGMErUI60sMocOPnTHEpPRVQ",
@@ -65,6 +66,7 @@ export default function AboutPage() {
             <Link to="/#services" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Services</Link>
             <Link to="/#methode" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Notre Méthode</Link>
             <Link to="/#avis" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Avis</Link>
+            <Link to="/about" className="text-sm text-gray-900 font-semibold cursor-pointer">À propos</Link>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
@@ -229,7 +231,7 @@ export default function AboutPage() {
 
       {/* Footer simple */}
       <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-400">
-        © {new Date().getFullYear()} Éclat Pur — Sami Djennane. Tous droits réservés.
+        © {new Date().getFullYear()} LVTV Clean Service — Sami Djennane. Tous droits réservés.
       </footer>
     </div>
   );
