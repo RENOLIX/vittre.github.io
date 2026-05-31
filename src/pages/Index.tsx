@@ -168,12 +168,12 @@ function WindowShowcase() {
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
-          <div className="w-full h-80" style={{
-            backgroundImage: "url(https://hercules-cdn.com/file_EGMErUI60sMocOPnTHEpPRVQ)",
-            backgroundAttachment: "fixed",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }} />
+          <img
+            src="https://hercules-cdn.com/file_EGMErUI60sMocOPnTHEpPRVQ"
+            alt="Résultat de nettoyage de vitres"
+            className="h-56 w-full object-cover object-center sm:h-80"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
