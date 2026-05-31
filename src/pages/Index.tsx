@@ -172,7 +172,6 @@ function WindowShowcase() {
             src={`${import.meta.env.BASE_URL}images/realisations/realisation-03.jpg`}
             alt="Résultat de nettoyage de vitres"
             className="h-56 w-full object-cover object-center sm:h-80"
-            loading="lazy"
           />
         </div>
       </div>
