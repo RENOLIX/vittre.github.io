@@ -14,7 +14,6 @@ export default function Index() {
       <WindowShowcase />
       <ServicesSection />
       <DevisSection />
-      <AvisSection />
       <Footer />
     </div>
   );
@@ -23,8 +22,7 @@ export default function Index() {
 const menuItems = [
   { label: "Services", ariaLabel: "Voir les services", link: "#services" },
   { label: "Méthode", ariaLabel: "Notre méthode", link: "#methode" },
-  { label: "Avis", ariaLabel: "Avis clients", link: "#avis" },
-  { label: "À propos", ariaLabel: "À propos de Sami", link: `${import.meta.env.BASE_URL}about` },
+  { label: "À propos", ariaLabel: "À propos de LVTV Clean Service", link: `${import.meta.env.BASE_URL}about` },
   { label: "Devis", ariaLabel: "Devis gratuit", link: "#devis" },
 ];
 
@@ -43,7 +41,6 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#services" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Services</a>
             <a href="#methode" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Notre Méthode</a>
-            <a href="#avis" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Avis</a>
             <Link to="/about" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">À propos</Link>
           </div>
           <div className="flex items-center gap-4">
@@ -113,7 +110,7 @@ function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full backdrop-blur-sm mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            France & Luxembourg · Intervention sous 48h
+            Toute la France · Intervention sous 48h
           </div>
 
           {/* Headline */}
@@ -130,7 +127,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
             <div className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white backdrop-blur-sm">
               <MapPin className="h-4 w-4 text-teal-400" />
-              Disponible en France et au Luxembourg
+              Disponible dans toute la France
             </div>
             <a href="#devis" className="text-center border border-white/20 text-white text-sm font-medium px-7 py-3.5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap">
               Devis gratuit
@@ -342,7 +339,7 @@ function AboutSection() {
                 Bonjour, je suis <span className="text-teal-500">Sami</span>
               </h2>
               <p className="text-gray-500 leading-relaxed mb-4 text-sm">
-                Laveur de vitres professionnel entre la <strong className="text-gray-700">France</strong> et le <strong className="text-gray-700">Luxembourg</strong>, j'interviens sur différents chantiers : maisons, villas, commerces, et sociétés.
+                LVTV Clean Service est une société locale spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
               </p>
               <p className="text-gray-500 leading-relaxed mb-6 text-sm">
                 Je suis <strong className="text-gray-700">flexible au niveau des horaires</strong> et toujours arrangeant concernant mes tarifs pour m'adapter à chaque client.
@@ -354,7 +351,7 @@ function AboutSection() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Mail className="w-4 h-4 text-teal-500 shrink-0" />
-                  <a href="mailto:sami.djennane.pro@gmail.com" className="hover:text-teal-600 transition-colors">sami.djennane.pro@gmail.com</a>
+                  <a href="mailto:Lvtvcleanservice@gmail.com" className="hover:text-teal-600 transition-colors">Lvtvcleanservice@gmail.com</a>
                 </div>
               </div>
               <Link
@@ -468,7 +465,7 @@ function DevisSection() {
                 <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="department">Département</label>
                 <input id="department" value={department} onChange={(e) => setDepartment(e.target.value)} required
                   className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300"
-                  placeholder="Ex : Moselle, Nord, Luxembourg" />
+                  placeholder="Ex : Moselle, Nord, Gironde" />
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="phone-number">Numéro de téléphone</label>
@@ -533,63 +530,6 @@ function DevisSection() {
   );
 }
 
-const reviews = [
-  { name: "Sophie M.", location: "Paris 16e", rating: 5, text: "Service impeccable, vitres parfaitement propres sans la moindre trace. L'équipe est ponctuelle et très professionnelle. Je recommande vivement !", avatar: "SM" },
-  { name: "Thomas R.", location: "Lyon", rating: 5, text: "Contrat annuel pour nos bureaux. Résultat irréprochable à chaque intervention. Nos clients remarquent la différence, c'est la meilleure publicité.", avatar: "TR" },
-  { name: "Claire D.", location: "Bordeaux", rating: 5, text: "Ils sont intervenus sur ma véranda en moins de 48h comme promis. Travail soigné, produits sans odeur. Je suis bluffée par le résultat !", avatar: "CD" },
-  { name: "Marc L.", location: "Toulouse", rating: 5, text: "Nettoyage de nos panneaux solaires — efficacité retrouvée immédiatement. Rapport qualité-prix excellent et équipe très agréable.", avatar: "ML" },
-  { name: "Isabelle F.", location: "Nantes", rating: 4, text: "Très bonne prestation, vitres intérieures et extérieures nickel. Je les rappellerai pour la prochaine session sans hésiter.", avatar: "IF" },
-  { name: "Antoine P.", location: "Marseille", rating: 5, text: "Façade vitrée de notre boutique transformée ! Les passants s'en sont rendu compte. Sérieux, rapide et le tarif est juste.", avatar: "AP" },
-];
-
-function StarRating({ count }: { count: number }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} className={`w-4 h-4 ${i < count ? "text-amber-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
-function AvisSection() {
-  return (
-    <section id="avis" className="px-6 py-20 bg-gray-50">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-4">
-          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Témoignages clients</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Ce que disent nos clients</h2>
-          <p className="text-gray-500 max-w-md mx-auto">Des clients satisfaits à travers la France et le Luxembourg.</p>
-        </div>
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <span className="text-4xl font-extrabold text-gray-900">4.9</span>
-          <div>
-            <StarRating count={5} />
-            <p className="text-xs text-gray-400 mt-1">Basé sur 847 avis vérifiés</p>
-          </div>
-        </div>
-        <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide" style={{ scrollSnapType: "x mandatory" }}>
-          {reviews.map((review) => (
-            <div key={review.name} className="flex-none w-80 bg-white rounded-2xl p-6 border border-gray-100 flex flex-col gap-4 hover:shadow-md transition-shadow" style={{ scrollSnapAlign: "start" }}>
-              <StarRating count={review.rating} />
-              <p className="text-sm text-gray-600 leading-relaxed flex-1">{`"${review.text}"`}</p>
-              <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
-                <div className="w-9 h-9 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs font-bold shrink-0">{review.avatar}</div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">{review.name}</p>
-                  <p className="text-xs text-gray-400">{review.location}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -599,14 +539,14 @@ function Footer() {
           <div>
             <Logo />
             <p className="text-sm text-gray-500 mt-4 leading-relaxed">
-              L'excellence du nettoyage de vitres en France et au Luxembourg. Transparence, professionnalisme et respect de l'environnement.
+              L'excellence du nettoyage de vitres dans toute la France. Transparence, professionnalisme et respect de l'environnement.
             </p>
             <div className="mt-4 space-y-1.5">
               <a href="tel:+33609702019" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
                 <Phone className="w-3.5 h-3.5" /> +33 6 09 70 20 19
               </a>
-              <a href="mailto:sami.djennane.pro@gmail.com" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
-                <Mail className="w-3.5 h-3.5" /> sami.djennane.pro@gmail.com
+              <a href="mailto:Lvtvcleanservice@gmail.com" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
+                <Mail className="w-3.5 h-3.5" /> Lvtvcleanservice@gmail.com
               </a>
               <p className="text-xs text-gray-400 pl-5">Snapchat : lvtv57</p>
             </div>
@@ -622,7 +562,7 @@ function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-4">Entreprise</h4>
             <ul className="space-y-2.5 text-sm text-gray-500">
-              <li><Link to="/about" className="hover:text-gray-900 transition-colors cursor-pointer">À propos de Sami</Link></li>
+              <li><Link to="/about" className="hover:text-gray-900 transition-colors cursor-pointer">À propos</Link></li>
               {["Notre méthode", "Contact"].map((item) => (
                 <li key={item}><a href="#" className="hover:text-gray-900 transition-colors cursor-pointer">{item}</a></li>
               ))}

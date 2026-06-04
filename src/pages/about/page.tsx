@@ -13,37 +13,10 @@ function Logo() {
   );
 }
 
-const photos = [
-  {
-    url: `${import.meta.env.BASE_URL}images/realisations/realisation-01.jpg`,
-    label: "Nettoyage professionnel en hauteur",
-  },
-  {
-    url: `${import.meta.env.BASE_URL}images/realisations/realisation-02.jpg`,
-    label: "Nettoyage de façade vitrée",
-  },
-  {
-    url: `${import.meta.env.BASE_URL}images/realisations/realisation-03.jpg`,
-    label: "Vitres impeccables",
-  },
-  {
-    url: `${import.meta.env.BASE_URL}images/realisations/realisation-04.jpg`,
-    label: "Nettoyage à la perche",
-  },
-  {
-    url: "https://hercules-cdn.com/file_EGMErUI60sMocOPnTHEpPRVQ",
-    label: "Résultat garanti",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1775695941175-fc9739087598?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080",
-    label: "Vitres impeccables",
-  },
-];
-
 const stats = [
   { value: "5+", label: "Années d'expérience" },
   { value: "200+", label: "Clients satisfaits" },
-  { value: "2", label: "Pays couverts" },
+  { value: "France", label: "Zone couverte" },
   { value: "48h", label: "Délai d'intervention" },
 ];
 
@@ -65,7 +38,6 @@ export default function AboutPage() {
           <div className="hidden md:flex items-center gap-8">
             <Link to="/#services" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Services</Link>
             <Link to="/#methode" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Notre Méthode</Link>
-            <Link to="/#avis" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Avis</Link>
             <Link to="/about" className="text-sm text-gray-900 font-semibold cursor-pointer">À propos</Link>
           </div>
           <div className="flex items-center gap-4">
@@ -93,7 +65,7 @@ export default function AboutPage() {
             Bonjour, je suis <span className="text-teal-400">Sami</span>
           </h1>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            Laveur de vitres professionnel entre la France et le Luxembourg, passionné par un travail bien fait.
+            LVTV Clean Service est une société locale spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
           </p>
         </div>
       </section>
@@ -123,7 +95,7 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mon parcours</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Je m'appelle <strong>Sami</strong>, laveur de vitres professionnel opérant entre la <strong>France</strong> et le <strong>Luxembourg</strong>. Fort de plusieurs années d'expérience, j'interviens sur tous types de chantiers : maisons individuelles, villas, commerces, bureaux et sociétés.
+              LVTV Clean Service intervient dans toute la France pour le lavage de vitres des particuliers, commerçants, artisans et sociétés. Notre expérience terrain nous permet d'assurer un entretien régulier, soigné et adapté à chaque besoin.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6">
               Mon engagement : un résultat impeccable à chaque passage. Je suis <strong>flexible au niveau des horaires</strong> et toujours <strong>arrangeant concernant mes tarifs</strong> pour m'adapter à chaque situation.
@@ -131,7 +103,7 @@ export default function AboutPage() {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <MapPin className="w-4 h-4 text-teal-500 shrink-0" />
-                France & Luxembourg
+                Toute la France
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Clock className="w-4 h-4 text-teal-500 shrink-0" />
@@ -143,7 +115,7 @@ export default function AboutPage() {
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Mail className="w-4 h-4 text-teal-500 shrink-0" />
-                sami.djennane.pro@gmail.com
+                Lvtvcleanservice@gmail.com
               </div>
             </div>
           </div>
@@ -183,33 +155,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Galerie photos */}
-      <section className="px-6 py-20 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Mes réalisations</h2>
-            <p className="text-gray-500">Quelques exemples de chantiers réalisés</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {photos.map((p, i) => (
-              <div key={i} className="relative group rounded-2xl overflow-hidden shadow-md aspect-square">
-                <img
-                  src={p.url}
-                  alt={p.label}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/30 transition-colors duration-300" />
-                <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="bg-white/90 backdrop-blur-sm text-xs font-semibold text-gray-900 px-3 py-1.5 rounded-lg">
-                    {p.label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact CTA */}
       <section className="px-6 py-20 bg-gray-900">
         <div className="max-w-2xl mx-auto text-center">
@@ -220,7 +165,7 @@ export default function AboutPage() {
               className="flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
               <Phone className="w-4 h-4" /> +33 6 09 70 20 19
             </a>
-            <a href="mailto:sami.djennane.pro@gmail.com"
+            <a href="mailto:Lvtvcleanservice@gmail.com"
               className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
               <Mail className="w-4 h-4" /> Envoyer un email
             </a>

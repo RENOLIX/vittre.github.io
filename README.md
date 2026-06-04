@@ -1,3 +1,3 @@
 # LVTV Clean Service
 
-Site vitrine de lavage de vitres professionnel en France et au Luxembourg.
+Site vitrine de lavage de vitres professionnel dans toute la France.
