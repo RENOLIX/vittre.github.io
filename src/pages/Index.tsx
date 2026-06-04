@@ -341,9 +341,6 @@ function AboutSection() {
               <p className="text-gray-500 leading-relaxed mb-4 text-sm">
                 LVTV Clean Service est une société locale spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
               </p>
-              <p className="text-gray-500 leading-relaxed mb-6 text-sm">
-                Je suis <strong className="text-gray-700">flexible au niveau des horaires</strong> et toujours arrangeant concernant mes tarifs pour m'adapter à chaque client.
-              </p>
               <div className="flex flex-col gap-2 mb-7">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Phone className="w-4 h-4 text-teal-500 shrink-0" />

@@ -97,9 +97,6 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed mb-4">
               LVTV Clean Service intervient dans toute la France pour le lavage de vitres des particuliers, commerçants, artisans et sociétés. Notre expérience terrain nous permet d'assurer un entretien régulier, soigné et adapté à chaque besoin.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Mon engagement : un résultat impeccable à chaque passage. Je suis <strong>flexible au niveau des horaires</strong> et toujours <strong>arrangeant concernant mes tarifs</strong> pour m'adapter à chaque situation.
-            </p>
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <MapPin className="w-4 h-4 text-teal-500 shrink-0" />
