@@ -1,6 +1,6 @@
 import { type FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
-import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MoveUp, MapPin } from "lucide-react";
+import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MapPin } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
 
 export default function Index() {
@@ -29,7 +29,7 @@ const menuItems = [
 const socialItems = [
   { label: "Instagram", link: "#" },
   { label: "Facebook", link: "#" },
-  { label: "Snapchat", link: "#" },
+  { label: "Snapchat · Lvtvclean", link: "https://www.snapchat.com/add/lvtvclean" },
 ];
 
 function Navbar() {
@@ -85,6 +85,17 @@ function Logo() {
   );
 }
 
+function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <img
+      src={`${import.meta.env.BASE_URL}images/brand/snapchat-ghost.png`}
+      alt=""
+      aria-hidden="true"
+      className={className}
+    />
+  );
+}
+
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -110,7 +121,7 @@ function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full backdrop-blur-sm mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            Toute la France · Intervention sous 48h
+            En France · Intervention sous 48h
           </div>
 
           {/* Headline */}
@@ -127,7 +138,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
             <div className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white backdrop-blur-sm">
               <MapPin className="h-4 w-4 text-teal-400" />
-              Disponible dans toute la France
+              Disponible en France
             </div>
             <a href="#devis" className="text-center border border-white/20 text-white text-sm font-medium px-7 py-3.5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap">
               Devis gratuit
@@ -187,19 +198,13 @@ function SloganBanner() {
           {'"Des vitres propres, c\'est une meilleure luminosité !'}
         </p>
         <div className="mt-4 w-16 h-0.5 bg-teal-400 mx-auto" />
-        <p className="text-gray-500 text-sm mt-3 font-medium tracking-widest uppercase">Sami — LVTV Clean Service</p>
+        <p className="text-gray-500 text-sm mt-3 font-medium tracking-widest uppercase">LVTV Clean Service</p>
       </div>
     </section>
   );
 }
 
 const allServices = [
-  {
-    icon: <MoveUp className="w-6 h-6 text-teal-500" />,
-    title: "Travail en hauteur",
-    desc: "Interventions sur immeubles, façades et grandes surfaces vitrées en toute sécurité. Matériel professionnel adapté.",
-    tags: ["Nacelle", "Échafaudage", "Rappel"],
-  },
   {
     icon: <Home className="w-6 h-6 text-teal-500" />,
     title: "Maison & Appartement",
@@ -238,8 +243,8 @@ function AllServicesSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Prestations</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Tous mes services</h2>
-          <p className="text-gray-500">Particulier ou professionnel, j'interviens sur tout type de chantier.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Tous nos services</h2>
+          <p className="text-gray-500">Particulier ou professionnel, nous intervenons sur tout type de chantier.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {allServices.map((s) => (
@@ -327,7 +332,7 @@ function AboutSection() {
             <div className="relative h-72 md:h-auto">
               <img
                 src="https://images.unsplash.com/photo-1761689502577-0013be84f1bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Sami laveur de vitres"
+                alt="Équipe LVTV Clean Service"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 md:to-white/0" />
@@ -335,9 +340,7 @@ function AboutSection() {
             {/* Content */}
             <div className="p-8 md:p-10 flex flex-col justify-center">
               <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">À propos</span>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
-                Bonjour, je suis <span className="text-teal-500">Sami</span>
-              </h2>
+              <h2 className="text-3xl font-extrabold text-gray-900 mb-4">LVTV Clean Service</h2>
               <p className="text-gray-500 leading-relaxed mb-4 text-sm">
                 LVTV Clean Service est une société locale spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
               </p>
@@ -385,8 +388,9 @@ function DevisSection() {
   const [postalCode, setPostalCode] = useState("");
   const [department, setDepartment] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const message = [
@@ -411,6 +415,55 @@ function DevisSection() {
       "Merci de me recontacter pour un devis.",
     ].join("\n");
 
+    const submitter = (event.nativeEvent as SubmitEvent).submitter;
+    const deliveryMethod =
+      submitter instanceof HTMLButtonElement ? submitter.value : "whatsapp";
+
+    if (deliveryMethod === "email") {
+      setEmailStatus("submitting");
+
+      try {
+        const response = await fetch(
+          "https://submit-form.com/64a2c6b4-6028-4af3-9269-a0f959613084",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              nom: lastName,
+              prenom: firstName,
+              telephone: phoneNumber,
+              adresse: address,
+              ville: city,
+              codePostal: postalCode,
+              departement: department,
+              typeDeBien: selected,
+              nombreDeFenetres: windows,
+              frequenceSouhaitee: frequency,
+              message,
+              _email: {
+                from: `${firstName} ${lastName}`,
+                subject: `Nouvelle demande de devis - ${firstName} ${lastName}`,
+              },
+            }),
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error(`Erreur Formspark : ${response.status}`);
+        }
+
+        setEmailStatus("success");
+      } catch {
+        setEmailStatus("error");
+      }
+
+      return;
+    }
+
+    setEmailStatus("idle");
     window.open(
       `https://wa.me/33609702019?text=${encodeURIComponent(message)}`,
       "_blank",
@@ -424,7 +477,7 @@ function DevisSection() {
         <div className="bg-white rounded-2xl border border-gray-100 shadow-lg p-8 md:p-12">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-2">Estimez votre nettoyage</h2>
-            <p className="text-gray-500 text-sm">Remplissez le formulaire, votre demande s'ouvrira sur WhatsApp.</p>
+            <p className="text-gray-500 text-sm">Remplissez le formulaire puis envoyez votre demande par WhatsApp ou par email.</p>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="grid sm:grid-cols-2 gap-5 mb-7">
@@ -512,14 +565,41 @@ function DevisSection() {
                 </select>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
               <span className="flex items-center gap-2 text-sm text-gray-400">
                 <Lock className="w-4 h-4" /> Données sécurisées
               </span>
-              <button type="submit" className="w-full sm:w-auto bg-gray-900 text-white text-sm font-semibold px-8 py-3 rounded-xl hover:bg-gray-800 transition-colors cursor-pointer">
-                Demander mon devis sur WhatsApp
-              </button>
+              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                <button
+                  type="submit"
+                  name="deliveryMethod"
+                  value="whatsapp"
+                  className="w-full sm:w-auto bg-gray-900 text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors cursor-pointer"
+                >
+                  Demander mon devis sur WhatsApp
+                </button>
+                <button
+                  type="submit"
+                  name="deliveryMethod"
+                  value="email"
+                  disabled={emailStatus === "submitting"}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-600 disabled:cursor-wait disabled:opacity-60 sm:w-auto"
+                >
+                  <Mail className="w-4 h-4" />
+                  {emailStatus === "submitting" ? "Envoi en cours..." : "Demander mon devis par mail"}
+                </button>
+              </div>
             </div>
+            {emailStatus === "success" && (
+              <p className="mt-4 text-center text-sm font-medium text-teal-600">
+                Votre demande a bien été envoyée par email.
+              </p>
+            )}
+            {emailStatus === "error" && (
+              <p className="mt-4 text-center text-sm font-medium text-red-600">
+                L'envoi a échoué. Réessayez ou utilisez le bouton WhatsApp.
+              </p>
+            )}
           </form>
         </div>
       </div>
@@ -536,7 +616,7 @@ function Footer() {
           <div>
             <Logo />
             <p className="text-sm text-gray-500 mt-4 leading-relaxed">
-              L'excellence du nettoyage de vitres dans toute la France. Transparence, professionnalisme et respect de l'environnement.
+              L'excellence du nettoyage de vitres en France. Transparence, professionnalisme et respect de l'environnement.
             </p>
             <div className="mt-4 space-y-1.5">
               <a href="tel:+33609702019" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
@@ -545,13 +625,20 @@ function Footer() {
               <a href="mailto:Lvtvcleanservice@gmail.com" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
                 <Mail className="w-3.5 h-3.5" /> Lvtvcleanservice@gmail.com
               </a>
-              <p className="text-xs text-gray-400 pl-5">Snapchat : lvtv57</p>
+              <a
+                href="https://www.snapchat.com/add/lvtvclean"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                <SnapchatIcon className="w-3.5 h-3.5 object-contain" /> Lvtvclean
+              </a>
             </div>
           </div>
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-4">Services</h4>
             <ul className="space-y-2.5 text-sm text-gray-500">
-              {["Travail en hauteur", "Maison & Appartement", "Vitrine de commerce", "Baies vitrées", "Store & Volet"].map((item) => (
+              {["Maison & Appartement", "Vitrine de commerce", "Baies vitrées", "Store & Volet"].map((item) => (
                 <li key={item}><a href="#services" className="hover:text-gray-900 transition-colors cursor-pointer">{item}</a></li>
               ))}
             </ul>
@@ -575,13 +662,22 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-gray-100 gap-4">
-          <p className="text-xs text-gray-400">© {year} LVTV Clean Service — Sami Djennane. Tous droits réservés.</p>
+          <p className="text-xs text-gray-400">© {year} LVTV Clean Service. Tous droits réservés.</p>
           <div className="flex items-center gap-4">
             <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="Instagram">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="Facebook">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a
+              href="https://www.snapchat.com/add/lvtvclean"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+              aria-label="Snapchat Lvtvclean"
+            >
+              <SnapchatIcon className="w-5 h-5 object-contain opacity-70" />
             </a>
           </div>
         </div>

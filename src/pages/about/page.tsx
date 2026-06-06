@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Check, MapPin, Clock, Phone, Mail, Star } from "lucide-react";
+import { ArrowLeft, Check, MapPin, Clock, Phone, Mail } from "lucide-react";
 
 function Logo() {
   return (
@@ -13,19 +13,23 @@ function Logo() {
   );
 }
 
-const stats = [
-  { value: "5+", label: "Années d'expérience" },
-  { value: "200+", label: "Clients satisfaits" },
-  { value: "France", label: "Zone couverte" },
-  { value: "48h", label: "Délai d'intervention" },
-];
-
 const values = [
   { title: "Flexibilité", desc: "Disponible tôt le matin, en soirée ou le week-end selon vos besoins." },
   { title: "Tarifs arrangeants", desc: "Devis personnalisé adapté à votre budget, sans mauvaise surprise." },
   { title: "Qualité garantie", desc: "Résultat sans traces ni coulures, contrôle visuel systématique." },
   { title: "Produits éco", desc: "Produits biodégradables respectueux de l'environnement et de votre intérieur." },
 ];
+
+function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <img
+      src={`${import.meta.env.BASE_URL}images/brand/snapchat-ghost.png`}
+      alt=""
+      aria-hidden="true"
+      className={className}
+    />
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -61,9 +65,7 @@ export default function AboutPage() {
           style={{ background: "radial-gradient(ellipse, #5eead4 0%, #2dd4bf 30%, transparent 70%)" }} />
         <div className="max-w-4xl mx-auto text-center relative">
           <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-4">À propos</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            Bonjour, je suis <span className="text-teal-400">Sami</span>
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">LVTV Clean Service</h1>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
             LVTV Clean Service est une société locale spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
           </p>
@@ -77,30 +79,20 @@ export default function AboutPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <img
                 src="https://images.unsplash.com/photo-1719499757876-346424e8f67d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Sami laveur de vitres"
+                alt="Équipe LVTV Clean Service"
                 className="w-full h-96 object-cover"
               />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 flex items-center gap-3">
-                  <div className="flex">
-                    {[1,2,3,4,5].map(i => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold text-gray-900">4.9/5 — 200+ clients</span>
-                </div>
-              </div>
             </div>
           </div>
           <div>
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mon parcours</h2>
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Notre parcours</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              LVTV Clean Service intervient dans toute la France pour le lavage de vitres des particuliers, commerçants, artisans et sociétés. Notre expérience terrain nous permet d'assurer un entretien régulier, soigné et adapté à chaque besoin.
+              LVTV Clean Service intervient en France pour le lavage de vitres des particuliers, commerçants, artisans et sociétés. Notre expérience terrain nous permet d'assurer un entretien régulier, soigné et adapté à chaque besoin.
             </p>
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <MapPin className="w-4 h-4 text-teal-500 shrink-0" />
-                Toute la France
+                En France
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Clock className="w-4 h-4 text-teal-500 shrink-0" />
@@ -119,24 +111,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="px-6 py-12 bg-gray-900">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map(s => (
-            <div key={s.label}>
-              <p className="text-4xl font-extrabold text-teal-400 mb-1">{s.value}</p>
-              <p className="text-sm text-gray-400">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Valeurs */}
       <section className="px-6 py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Mes engagements</h2>
-            <p className="text-gray-500">Ce qui me distingue au quotidien</p>
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Nos engagements</h2>
+            <p className="text-gray-500">Ce qui nous distingue au quotidien</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map(v => (
@@ -155,8 +135,8 @@ export default function AboutPage() {
       {/* Contact CTA */}
       <section className="px-6 py-20 bg-gray-900">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold text-white mb-4">Contactez-moi</h2>
-          <p className="text-gray-400 mb-8">Devis gratuit, réponse rapide. N'hésitez pas à me contacter !</p>
+          <h2 className="text-3xl font-extrabold text-white mb-4">Contactez-nous</h2>
+          <p className="text-gray-400 mb-8">Devis gratuit, réponse rapide. N'hésitez pas à nous contacter !</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+33609702019"
               className="flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
@@ -167,13 +147,20 @@ export default function AboutPage() {
               <Mail className="w-4 h-4" /> Envoyer un email
             </a>
           </div>
-          <p className="text-gray-500 text-sm mt-4">Snapchat : <span className="text-gray-300 font-medium">lvtv57</span></p>
+          <a
+            href="https://www.snapchat.com/add/lvtvclean"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+          >
+            <SnapchatIcon className="w-4 h-4 object-contain invert" /> Lvtvclean
+          </a>
         </div>
       </section>
 
       {/* Footer simple */}
       <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-400">
-        © {new Date().getFullYear()} LVTV Clean Service — Sami Djennane. Tous droits réservés.
+        © {new Date().getFullYear()} LVTV Clean Service. Tous droits réservés.
       </footer>
     </div>
   );
