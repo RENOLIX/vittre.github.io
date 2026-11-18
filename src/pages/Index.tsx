@@ -495,6 +495,10 @@ function DevisSection() {
   const [department, setDepartment] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailStatus, setEmailStatus] = useState<"idle" | "submitting">("idle");
+  // L'adresse d'envoi et les champs cachés ne sont ajoutés qu'une fois la page chargée :
+  // dans le HTML pré-rendu, ce motif est pris à tort pour du hameçonnage par certains antivirus (Avast).
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const formsparkEndpoint =
     "https://submit-form.com/64a2c6b4-6028-4af3-9269-a0f959613084";
 
@@ -547,15 +551,19 @@ function DevisSection() {
             <h2 className="text-3xl font-extrabold text-gray-900 mb-2">Estimez votre nettoyage</h2>
             <p className="text-gray-500 text-sm">Remplissez le formulaire puis envoyez votre demande par WhatsApp ou par email.</p>
           </div>
-          <form action={formsparkEndpoint} method="POST" onSubmit={handleSubmit}>
-            <input type="hidden" name="_redirect" value="https://lvtvcleanservice.fr/#devis" />
-            <input
-              type="hidden"
-              name="_email.subject"
-              value={`Nouvelle demande de devis - ${firstName} ${lastName}`}
-            />
-            <input type="hidden" name="Type de bien" value={selected} />
-            <input type="hidden" name="Message complet" value={message} />
+          <form action={hydrated ? formsparkEndpoint : undefined} method="POST" onSubmit={handleSubmit}>
+            {hydrated && (
+              <>
+                <input type="hidden" name="_redirect" value="https://lvtvcleanservice.fr/#devis" />
+                <input
+                  type="hidden"
+                  name="_email.subject"
+                  value={`Nouvelle demande de devis - ${firstName} ${lastName}`}
+                />
+                <input type="hidden" name="Type de bien" value={selected} />
+                <input type="hidden" name="Message complet" value={message} />
+              </>
+            )}
             <div className="grid sm:grid-cols-2 gap-5 mb-7">
               <div>
                 <label className="text-sm font-medium text-gray-700 block mb-2" htmlFor="first-name">Prénom</label>
