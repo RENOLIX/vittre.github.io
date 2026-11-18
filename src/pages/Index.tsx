@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Mail, ArrowRight, Wind, Layers, MapPin, ChevronDown } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
 import { DevelopedBy, FloatingWhatsApp, PHONE_DISPLAY, WHATSAPP_URL, WhatsAppIcon } from "@/components/WhatsApp.tsx";
-import { CITIES_54, CITIES_57, FAQ } from "@/seo.ts";
+import { ADDRESS, CITIES_54, CITIES_57, FACEBOOK_URL, FAQ } from "@/seo.ts";
 
 export default function Index() {
   return (
@@ -35,8 +35,7 @@ const menuItems = [
 ];
 
 const socialItems = [
-  { label: "Instagram", link: "#" },
-  { label: "Facebook", link: "#" },
+  { label: "Facebook", link: "https://www.facebook.com/p/LVTV-Clean-Service-61591446741505/" },
   { label: "Snapchat · Lvtvclean", link: "https://www.snapchat.com/add/lvtvclean" },
 ];
 
@@ -700,7 +699,7 @@ function ZonesSection() {
             Lavage de vitres en Moselle et Meurthe-et-Moselle
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Basés en Moselle, nous nettoyons les vitres des particuliers, commerces et entreprises de Metz à Nancy, en passant par Thionville, Forbach et Sarreguemines.
+            Basés à Amnéville, en Moselle, nous nettoyons les vitres des particuliers, commerces et entreprises de Metz à Nancy, en passant par Thionville, Forbach et Sarreguemines.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
@@ -710,9 +709,17 @@ function ZonesSection() {
                 <MapPin className="w-5 h-5 text-teal-500" /> Nettoyage de vitres en {g.title}
               </h3>
               <ul className="flex flex-wrap gap-2">
-                {g.cities.map((c) => (
-                  <li key={c} className="text-xs bg-teal-50 text-teal-700 font-medium px-3 py-1.5 rounded-full">{c}</li>
-                ))}
+                {g.cities.map((c) =>
+                  c === "Metz" ? (
+                    <li key={c}>
+                      <Link to="/nettoyage-vitres-metz" className="block text-xs bg-teal-500 text-white font-semibold px-3 py-1.5 rounded-full hover:bg-teal-600 transition-colors">
+                        Metz →
+                      </Link>
+                    </li>
+                  ) : (
+                    <li key={c} className="text-xs bg-teal-50 text-teal-700 font-medium px-3 py-1.5 rounded-full">{c}</li>
+                  ),
+                )}
               </ul>
             </div>
           ))}
@@ -753,7 +760,7 @@ function FaqSection() {
   );
 }
 
-function Footer() {
+export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-white border-t border-gray-100 px-6 pt-14 pb-8">
@@ -771,6 +778,9 @@ function Footer() {
               <a href="mailto:Lvtvcleanservice@gmail.com" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
                 <Mail className="w-3.5 h-3.5" /> Lvtvcleanservice@gmail.com
               </a>
+              <p className="flex items-center gap-2 text-xs text-gray-500">
+                <MapPin className="w-3.5 h-3.5 shrink-0" /> {ADDRESS.street}, {ADDRESS.postalCode} {ADDRESS.city}
+              </p>
               <a
                 href="https://www.snapchat.com/add/lvtvclean"
                 target="_blank"
@@ -785,8 +795,9 @@ function Footer() {
             <h4 className="text-sm font-semibold text-gray-900 mb-4">Services</h4>
             <ul className="space-y-2.5 text-sm text-gray-500">
               {["Maison & Appartement", "Vitrine de commerce", "Baies vitrées", "Store & Volet"].map((item) => (
-                <li key={item}><a href="#services" className="hover:text-gray-900 transition-colors cursor-pointer">{item}</a></li>
+                <li key={item}><a href="/#services" className="hover:text-gray-900 transition-colors cursor-pointer">{item}</a></li>
               ))}
+              <li><Link to="/nettoyage-vitres-metz" className="hover:text-gray-900 transition-colors cursor-pointer">Nettoyage de vitres à Metz</Link></li>
             </ul>
           </div>
           <div>
@@ -794,10 +805,10 @@ function Footer() {
             <ul className="space-y-2.5 text-sm text-gray-500">
               <li><Link to="/about" className="hover:text-gray-900 transition-colors cursor-pointer">À propos</Link></li>
               {[
-                { label: "Notre méthode", href: "#methode" },
-                { label: "Zones d'intervention", href: "#zones" },
-                { label: "FAQ", href: "#faq" },
-                { label: "Devis gratuit", href: "#devis" },
+                { label: "Notre méthode", href: "/#methode" },
+                { label: "Zones d'intervention", href: "/#zones" },
+                { label: "FAQ", href: "/#faq" },
+                { label: "Devis gratuit", href: "/#devis" },
               ].map((item) => (
                 <li key={item.label}><a href={item.href} className="hover:text-gray-900 transition-colors cursor-pointer">{item.label}</a></li>
               ))}
@@ -818,10 +829,7 @@ function Footer() {
             <DevelopedBy />
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="Instagram">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="Facebook">
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="LVTV Clean Service sur Facebook">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
             <a

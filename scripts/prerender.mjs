@@ -17,6 +17,7 @@ if (!template.includes("<!--seo-head-->") || !template.includes("<!--app-html-->
 const routes = [
   { url: "/", seo: "/", file: "index.html" },
   { url: "/about", seo: "/about", file: "about.html" },
+  { url: "/nettoyage-vitres-metz", seo: "/nettoyage-vitres-metz", file: "nettoyage-vitres-metz.html" },
   { url: "/__404__", seo: "/404", file: "404.html" },
 ];
 

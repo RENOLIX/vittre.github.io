@@ -66,6 +66,7 @@ export default function AboutPage() {
           <div className="hidden md:flex items-center gap-8">
             <Link to="/#services" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Services</Link>
             <Link to="/#methode" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Notre Méthode</Link>
+            <Link to="/nettoyage-vitres-metz" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Metz</Link>
             <Link to="/about" className="text-sm text-gray-900 font-semibold cursor-pointer">À propos</Link>
           </div>
           <div className="flex items-center gap-4">

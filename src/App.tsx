@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/about/page.tsx";
+import MetzPage from "./pages/metz/page.tsx";
 import AuthCallback from "./pages/auth/Callback.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { PAGES } from "./seo.ts";
@@ -25,6 +26,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/nettoyage-vitres-metz" element={<MetzPage />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -9,11 +9,18 @@ export const BUSINESS_NAME = "LVTV Clean Service";
 export const PHONE_E164 = "+33609702019";
 export const EMAIL = "Lvtvcleanservice@gmail.com";
 export const OG_IMAGE = `${SITE_URL}/images/brand/og-image.jpg`;
+export const FACEBOOK_URL = "https://www.facebook.com/p/LVTV-Clean-Service-61591446741505/";
+export const SNAPCHAT_URL = "https://www.snapchat.com/add/lvtvclean";
+export const ADDRESS = {
+  street: "13 Rue du Vieil Amnéville",
+  postalCode: "57360",
+  city: "Amnéville",
+};
 
 export const CITIES_57 = [
-  "Metz", "Thionville", "Montigny-lès-Metz", "Forbach", "Sarreguemines", "Yutz",
+  "Amnéville", "Metz", "Thionville", "Montigny-lès-Metz", "Forbach", "Sarreguemines", "Yutz",
   "Hayange", "Saint-Avold", "Sarrebourg", "Woippy", "Creutzwald", "Florange",
-  "Fameck", "Maizières-lès-Metz", "Marly", "Amnéville", "Hagondange", "Talange",
+  "Fameck", "Maizières-lès-Metz", "Marly", "Hagondange", "Talange",
   "Boulay-Moselle", "Bitche",
 ];
 
@@ -53,6 +60,36 @@ export const FAQ: { q: string; a: string }[] = [
   },
 ];
 
+export const METZ_QUARTIERS = [
+  "Centre-ville", "Nouvelle Ville", "Sablon", "Queuleu", "Plantières", "Bellecroix",
+  "Borny", "Grigy", "Technopôle", "Magny", "Devant-les-Ponts", "Patrotte – Metz-Nord",
+];
+
+export const METZ_COMMUNES = [
+  "Montigny-lès-Metz", "Woippy", "Marly", "Saint-Julien-lès-Metz", "Le Ban-Saint-Martin",
+  "Longeville-lès-Metz", "Moulins-lès-Metz", "Scy-Chazelles", "Augny", "Ars-sur-Moselle",
+  "Maizières-lès-Metz", "Peltre",
+];
+
+export const METZ_FAQ: { q: string; a: string }[] = [
+  {
+    q: "Intervenez-vous dans tous les quartiers de Metz ?",
+    a: "Oui. Nous nettoyons les vitres dans tous les quartiers de Metz (Centre-ville, Nouvelle Ville, Sablon, Queuleu, Plantières, Borny, Magny, Devant-les-Ponts…) et dans les communes de Metz Métropole comme Montigny-lès-Metz, Woippy ou Marly.",
+  },
+  {
+    q: "Sous quel délai pouvez-vous nettoyer mes vitres à Metz ?",
+    a: "Basés à Amnéville, à une vingtaine de minutes de Metz, nous pouvons généralement intervenir sous 48h après validation du devis.",
+  },
+  {
+    q: "Nettoyez-vous les vitrines des commerces du centre de Metz ?",
+    a: "Oui. Nous entretenons les vitrines et devantures de commerces, y compris tôt le matin ou après la fermeture, avec des passages ponctuels ou réguliers selon vos besoins.",
+  },
+  {
+    q: "Comment obtenir un devis pour un nettoyage de vitres à Metz ?",
+    a: "Écrivez-nous sur WhatsApp au +33 6 09 70 20 19 ou remplissez le formulaire de devis du site. Le devis est gratuit et sans engagement.",
+  },
+];
+
 export type PageSeo = {
   path: string;
   title: string;
@@ -72,6 +109,12 @@ export const PAGES: Record<string, PageSeo> = {
     title: "Laveur de Vitres en Moselle – À propos | LVTV Clean Service",
     description:
       "LVTV Clean Service, entreprise locale de lavage de vitres en Moselle : produits éco, disponible 7j/7 en Moselle et Meurthe-et-Moselle. Découvrez nos réalisations.",
+  },
+  "/nettoyage-vitres-metz": {
+    path: "/nettoyage-vitres-metz",
+    title: "Nettoyage Vitres Metz | Laveur de Vitres à Metz – LVTV Clean Service",
+    description:
+      "Nettoyage de vitres à Metz et Metz Métropole : appartements, maisons, vitrines, bureaux. Laveur de vitres basé à Amnéville, intervention sous 48h, devis gratuit.",
   },
   "/404": {
     path: "/404",
@@ -93,14 +136,22 @@ const business = {
   email: EMAIL,
   image: OG_IMAGE,
   logo: `${SITE_URL}/images/brand/icon-512.png`,
-  address: { "@type": "PostalAddress", addressRegion: "Moselle", addressCountry: "FR" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: ADDRESS.street,
+    postalCode: ADDRESS.postalCode,
+    addressLocality: ADDRESS.city,
+    addressRegion: "Moselle",
+    addressCountry: "FR",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 49.2612285, longitude: 6.1304408 },
   areaServed: [
     { "@type": "AdministrativeArea", name: "Moselle" },
     { "@type": "AdministrativeArea", name: "Meurthe-et-Moselle" },
     ...[...CITIES_57, ...CITIES_54].map((name) => ({ "@type": "City", name })),
   ],
   knowsLanguage: "fr",
-  sameAs: ["https://www.snapchat.com/add/lvtvclean"],
+  sameAs: [FACEBOOK_URL, SNAPCHAT_URL],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: PHONE_E164,
@@ -159,12 +210,23 @@ export function jsonLdFor(path: string) {
       })),
     });
   }
-  if (path === "/about") {
+  if (path === "/nettoyage-vitres-metz") {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: METZ_FAQ.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    });
+  }
+  if (path !== "/") {
     graph.push({
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "À propos", item: url },
+        { "@type": "ListItem", position: 2, name: path === "/about" ? "À propos" : "Nettoyage de vitres à Metz", item: url },
       ],
     });
   }
