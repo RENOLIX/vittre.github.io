@@ -11,6 +11,14 @@ export const EMAIL = "Lvtvcleanservice@gmail.com";
 export const OG_IMAGE = `${SITE_URL}/images/brand/og-image.jpg`;
 export const FACEBOOK_URL = "https://www.facebook.com/p/LVTV-Clean-Service-61591446741505/";
 export const SNAPCHAT_URL = "https://www.snapchat.com/add/lvtvclean";
+export const LEGAL = {
+  owner: "Sami Djennane",
+  status: "Entrepreneur individuel",
+  siren: "105 131 684",
+  siret: "105 131 684 00018",
+  ape: "81.22Z – Autres activités de nettoyage des bâtiments et nettoyage industriel",
+  registeredOffice: "47 rue Vivienne, 75002 Paris",
+};
 export const ADDRESS = {
   street: "13 Rue du Vieil Amnéville",
   postalCode: "57360",
@@ -37,6 +45,10 @@ export const FAQ: { q: string; a: string }[] = [
   {
     q: "Travaillez-vous pour les particuliers et les professionnels ?",
     a: "Oui. Nous nettoyons les vitres des maisons, appartements, vérandas et baies vitrées pour les particuliers, ainsi que les vitrines de commerce, bureaux et façades vitrées pour les professionnels.",
+  },
+  {
+    q: "Le nettoyage de vitres donne-t-il droit à un crédit d'impôt ?",
+    a: "Oui, pour les particuliers : le lavage de vitres à domicile relève des services à la personne et ouvre droit à un crédit d'impôt de 50 % des sommes versées, dans la limite de 12 000 € de dépenses par an (plafond majoré selon la situation du foyer). Une attestation fiscale annuelle vous est remise. Les prestations pour les professionnels n'y ouvrent pas droit.",
   },
   {
     q: "Comment obtenir un devis pour le lavage de mes vitres ?",
@@ -102,7 +114,7 @@ export const PAGES: Record<string, PageSeo> = {
     path: "/",
     title: "Nettoyage Vitres Moselle | Lavage de Vitres – LVTV Clean Service",
     description:
-      "Nettoyage et lavage de vitres en Moselle (57) et Meurthe-et-Moselle (54) : maisons, vitrines, baies vitrées, bureaux. Devis gratuit à Metz, Thionville, Nancy.",
+      "Nettoyage et lavage de vitres en Moselle (57) et Meurthe-et-Moselle (54) : maisons, vitrines, bureaux. 50 % de crédit d'impôt pour les particuliers, devis gratuit.",
   },
   "/about": {
     path: "/about",
@@ -115,6 +127,11 @@ export const PAGES: Record<string, PageSeo> = {
     title: "Nettoyage Vitres Metz | Laveur de Vitres à Metz – LVTV Clean Service",
     description:
       "Nettoyage de vitres à Metz et Metz Métropole : appartements, maisons, vitrines, bureaux. Laveur de vitres basé à Amnéville, intervention sous 48h, devis gratuit.",
+  },
+  "/mentions-legales": {
+    path: "/mentions-legales",
+    title: "Mentions légales et confidentialité | LVTV Clean Service",
+    description: "Mentions légales et politique de confidentialité du site LVTV Clean Service, nettoyage de vitres en Moselle.",
   },
   "/404": {
     path: "/404",
@@ -129,6 +146,9 @@ const business = {
   "@id": `${SITE_URL}/#business`,
   name: BUSINESS_NAME,
   alternateName: "LVTV Clean",
+  legalName: "Sami Djennane (LVTV Clean Service)",
+  taxID: "10513168400018",
+  identifier: { "@type": "PropertyValue", propertyID: "SIRET", value: "10513168400018" },
   description:
     "Entreprise de nettoyage et lavage de vitres en Moselle et Meurthe-et-Moselle pour particuliers et professionnels : vitres, vitrines, baies vitrées, vérandas, stores et volets.",
   url: `${SITE_URL}/`,
@@ -226,7 +246,12 @@ export function jsonLdFor(path: string) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: path === "/about" ? "À propos" : "Nettoyage de vitres à Metz", item: url },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: path === "/about" ? "À propos" : path === "/mentions-legales" ? "Mentions légales" : "Nettoyage de vitres à Metz",
+          item: url,
+        },
       ],
     });
   }

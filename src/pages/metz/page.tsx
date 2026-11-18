@@ -97,7 +97,7 @@ export default function MetzPage() {
               </a>
             </div>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-gray-500">
-              {["Intervention sous 48h", "Devis gratuit et sans engagement", "Produits éco-responsables", "Disponible 7j/7"].map((t) => (
+              {["50 % de crédit d'impôt (particuliers)", "Intervention sous 48h", "Devis gratuit et sans engagement", "Disponible 7j/7"].map((t) => (
                 <li key={t} className="flex items-center gap-1.5"><Check className="w-4 h-4 text-teal-500" />{t}</li>
               ))}
             </ul>

@@ -1,6 +1,6 @@
 import { type FormEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Mail, ArrowRight, Wind, Layers, MapPin, ChevronDown } from "lucide-react";
+import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Mail, ArrowRight, Wind, Layers, MapPin, ChevronDown, Wallet, FileCheck } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
 import { DevelopedBy, FloatingWhatsApp, PHONE_DISPLAY, WHATSAPP_URL, WhatsAppIcon } from "@/components/WhatsApp.tsx";
 import { ADDRESS, CITIES_54, CITIES_57, FACEBOOK_URL, FAQ } from "@/seo.ts";
@@ -12,6 +12,7 @@ export default function Index() {
       <main>
         <HeroSection />
         <SloganBanner />
+        <CreditImpotSection />
         <AboutSection />
         <AllServicesSection />
         <WindowShowcase />
@@ -216,9 +217,24 @@ function HeroSection() {
             </span>
           </h1>
 
-          <p className="text-white/60 text-lg max-w-lg leading-relaxed mb-10">
+          <p className="text-white/60 text-lg max-w-lg leading-relaxed mb-7">
             Lavage de vitres professionnel pour particuliers et professionnels à Metz, Thionville, Forbach, Sarreguemines, Nancy et dans toute la Moselle. Résultat sans traces, garanti.
           </p>
+
+          {/* Crédit d'impôt */}
+          <a
+            href="#credit-impot"
+            className="group mb-8 inline-flex items-center gap-3 rounded-2xl border border-teal-300/30 bg-teal-400/15 py-2 pl-2 pr-4 text-white backdrop-blur-sm transition-colors hover:bg-teal-400/25"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-400 text-sm font-extrabold text-gray-950">
+              -50%
+            </span>
+            <span className="text-sm leading-snug">
+              <span className="block font-semibold">Particuliers : 50 % de crédit d'impôt</span>
+              <span className="block text-white/70">Votre nettoyage de vitres à moitié prix*</span>
+            </span>
+            <ArrowRight className="h-4 w-4 shrink-0 text-teal-300 transition-transform group-hover:translate-x-0.5" />
+          </a>
 
           {/* Availability and CTA */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
@@ -685,6 +701,90 @@ function DevisSection() {
   );
 }
 
+function CreditImpotSection() {
+  const points = [
+    {
+      icon: <Home className="w-5 h-5 text-teal-500" />,
+      title: "Pour les particuliers",
+      desc: "Nettoyage de vitres à votre domicile, résidence principale ou secondaire. Que vous soyez imposable ou non : si vous ne payez pas d'impôt, la somme vous est remboursée.",
+    },
+    {
+      icon: <Wallet className="w-5 h-5 text-teal-500" />,
+      title: "Jusqu'à 12 000 € de dépenses par an",
+      desc: "Le crédit d'impôt porte sur 50 % de vos dépenses, dans la limite de 12 000 € par an et par foyer (plafond majoré selon votre situation familiale).",
+    },
+    {
+      icon: <FileCheck className="w-5 h-5 text-teal-500" />,
+      title: "Attestation fiscale fournie",
+      desc: "Vous recevez une attestation fiscale annuelle pour déclarer vos dépenses. L'avance immédiate de l'Urssaf peut aussi vous éviter d'avancer cette moitié : parlez-en avec nous.",
+    },
+  ];
+  return (
+    <section id="credit-impot" className="px-6 py-20 bg-white">
+      <div className="max-w-5xl mx-auto">
+        <div className="relative overflow-hidden rounded-3xl bg-gray-900 p-8 md:p-12">
+          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-teal-500/20 blur-3xl" aria-hidden="true" />
+          <div className="relative grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <span className="inline-block text-xs font-semibold tracking-widest text-teal-400 uppercase mb-3">Avantage fiscal</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">
+                50 % de crédit d'impôt sur votre nettoyage de vitres
+              </h2>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                En tant que particulier, le lavage de vitres à domicile entre dans les services à la personne :
+                la moitié de ce que vous payez vous revient sous forme de crédit d'impôt.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-400"
+              >
+                <WhatsAppIcon className="w-4 h-4" /> Demander mon devis
+              </a>
+            </div>
+            {/* Exemple chiffré */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <p className="text-sm font-semibold text-white mb-5">Exemple pour une prestation de 100 €</p>
+              <dl className="space-y-3 text-sm">
+                <div className="flex items-center justify-between text-gray-300">
+                  <dt>Prix de la prestation</dt>
+                  <dd className="font-semibold">100 €</dd>
+                </div>
+                <div className="flex items-center justify-between text-teal-300">
+                  <dt>Crédit d'impôt (50 %)</dt>
+                  <dd className="font-semibold">− 50 €</dd>
+                </div>
+                <div className="flex items-center justify-between border-t border-white/10 pt-4 text-white">
+                  <dt className="font-semibold">Coût réel pour vous</dt>
+                  <dd className="text-3xl font-extrabold text-teal-400">50 €</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <div className="relative mt-10 grid gap-4 md:grid-cols-3">
+            {points.map((p) => (
+              <div key={p.title} className="rounded-2xl bg-white p-5">
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-teal-50">{p.icon}</div>
+                <h3 className="mb-1.5 text-sm font-bold text-gray-900">{p.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-500">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="relative mt-6 text-[11px] leading-relaxed text-gray-500">
+            * Crédit d'impôt prévu à l'article 199 sexdecies du Code général des impôts pour les services à la personne
+            rendus au domicile des particuliers, selon la réglementation en vigueur. Les prestations réalisées pour les
+            professionnels (commerces, bureaux) n'y ouvrent pas droit. Conditions détaillées sur{" "}
+            <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-300">impots.gouv.fr</a>{" "}
+            et{" "}
+            <a href="https://www.urssaf.fr" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-300">urssaf.fr</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ZonesSection() {
   const groups = [
     { title: "Moselle (57)", cities: CITIES_57 },
@@ -817,9 +917,9 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-gray-900 mb-4">Légal</h4>
             <ul className="space-y-2.5 text-sm text-gray-500">
-              {["Mentions légales", "CGV", "Politique de confidentialité"].map((item) => (
-                <li key={item}><a href="#" className="hover:text-gray-900 transition-colors cursor-pointer">{item}</a></li>
-              ))}
+              <li><Link to="/mentions-legales" className="hover:text-gray-900 transition-colors cursor-pointer">Mentions légales</Link></li>
+              <li><a href="/mentions-legales#confidentialite" className="hover:text-gray-900 transition-colors cursor-pointer">Politique de confidentialité</a></li>
+              <li><a href="/#credit-impot" className="hover:text-gray-900 transition-colors cursor-pointer">Crédit d'impôt 50 %</a></li>
             </ul>
           </div>
         </div>
