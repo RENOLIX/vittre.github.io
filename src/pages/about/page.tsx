@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Check, MapPin, Clock, Phone, Mail } from "lucide-react";
+import { ArrowLeft, Check, MapPin, Clock, Mail } from "lucide-react";
+import { DevelopedBy, FloatingWhatsApp, PHONE_DISPLAY, WHATSAPP_URL, WhatsAppIcon } from "@/components/WhatsApp.tsx";
 
 function Logo() {
   return (
@@ -117,10 +118,10 @@ export default function AboutPage() {
                 <Clock className="w-4 h-4 text-teal-500 shrink-0" />
                 Disponible 7j/7, horaires flexibles
               </div>
-              <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Phone className="w-4 h-4 text-teal-500 shrink-0" />
-                +33 6 09 70 20 19
-              </div>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-gray-600 hover:text-teal-600 transition-colors">
+                <WhatsAppIcon className="w-4 h-4 text-teal-500 shrink-0" />
+                {PHONE_DISPLAY}
+              </a>
               <div className="flex items-center gap-3 text-sm text-gray-600">
                 <Mail className="w-4 h-4 text-teal-500 shrink-0" />
                 Lvtvcleanservice@gmail.com
@@ -198,9 +199,9 @@ export default function AboutPage() {
           <h2 className="text-3xl font-extrabold text-white mb-4">Contactez-nous</h2>
           <p className="text-gray-400 mb-8">Devis gratuit, réponse rapide. N'hésitez pas à nous contacter !</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+33609702019"
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
-              <Phone className="w-4 h-4" /> +33 6 09 70 20 19
+              <WhatsAppIcon className="w-4 h-4" /> {PHONE_DISPLAY}
             </a>
             <a href="mailto:Lvtvcleanservice@gmail.com"
               className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
@@ -219,9 +220,11 @@ export default function AboutPage() {
       </section>
 
       {/* Footer simple */}
-      <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-400">
-        © {new Date().getFullYear()} LVTV Clean Service. Tous droits réservés.
+      <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-400 flex flex-col items-center gap-1">
+        <p>© {new Date().getFullYear()} LVTV Clean Service. Tous droits réservés.</p>
+        <DevelopedBy />
       </footer>
+      <FloatingWhatsApp />
     </div>
   );
 }

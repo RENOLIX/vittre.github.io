@@ -1,7 +1,8 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Phone, Mail, ArrowRight, Wind, Layers, MapPin } from "lucide-react";
+import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Mail, ArrowRight, Wind, Layers, MapPin } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
+import { DevelopedBy, FloatingWhatsApp, PHONE_DISPLAY, WHATSAPP_URL, WhatsAppIcon } from "@/components/WhatsApp.tsx";
 
 export default function Index() {
   return (
@@ -15,6 +16,7 @@ export default function Index() {
       <ServicesSection />
       <DevisSection />
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }
@@ -32,22 +34,76 @@ const socialItems = [
   { label: "Snapchat · Lvtvclean", link: "https://www.snapchat.com/add/lvtvclean" },
 ];
 
+/** true tant que le hero est visible sous la barre de navigation */
+function useOnHero(navHeight = 64) {
+  const [onHero, setOnHero] = useState(true);
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+    if (!hero) {
+      setOnHero(false);
+      return;
+    }
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      setOnHero(hero.getBoundingClientRect().bottom > navHeight);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [navHeight]);
+  return onHero;
+}
+
 function Navbar() {
+  const onHero = useOnHero();
+  const linkClass = `text-sm transition-colors duration-500 cursor-pointer ${
+    onHero ? "text-white/85 hover:text-white" : "text-gray-700 hover:text-gray-900"
+  }`;
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/20" style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-500 ease-out ${
+          onHero ? "border-white/10" : "border-white/20 shadow-sm shadow-black/[0.03]"
+        }`}
+        style={{
+          backgroundColor: onHero ? "rgba(10,15,20,0.18)" : "rgba(255,255,255,0.55)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+      >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Logo />
+          <Logo white={onHero} />
           <div className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Services</a>
-            <a href="#methode" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">Notre Méthode</a>
-            <Link to="/about" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer">À propos</Link>
+            <a href="#services" className={linkClass}>Services</a>
+            <a href="#methode" className={linkClass}>Notre Méthode</a>
+            <Link to="/about" className={linkClass}>À propos</Link>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:+33609702019" className="text-sm text-gray-700 hover:text-gray-900 transition-colors cursor-pointer hidden md:block">
-              +33 6 09 70 20 19
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Nous contacter sur WhatsApp"
+              className={`${linkClass} hidden md:flex items-center gap-1.5`}
+            >
+              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+              {PHONE_DISPLAY}
             </a>
-            <a href="#devis" className="bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer hidden md:block">
+            <a
+              href="#devis"
+              className={`text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-500 cursor-pointer hidden md:block ${
+                onHero ? "bg-white text-gray-900 hover:bg-white/90" : "bg-gray-900 text-white hover:bg-gray-800"
+              }`}
+            >
               Devis Gratuit
             </a>
             {/* Mobile StaggeredMenu */}
@@ -58,9 +114,9 @@ function Navbar() {
                 socialItems={socialItems}
                 displaySocials={true}
                 displayItemNumbering={false}
-                menuButtonColor="#111"
+                menuButtonColor={onHero ? "#fff" : "#111"}
                 openMenuButtonColor="#111"
-                changeMenuColorOnOpen={false}
+                changeMenuColorOnOpen={true}
                 colors={["#2dd4bf", "#0f766e"]}
                 accentColor="#2dd4bf"
                 isFixed={true}
@@ -73,13 +129,22 @@ function Navbar() {
   );
 }
 
-function Logo() {
+function Logo({ white = false }: { white?: boolean }) {
+  const src = `${import.meta.env.BASE_URL}images/brand/lvtv-clean-service-logo.png`;
   return (
-    <Link to="/" aria-label="LVTV Clean Service">
+    <Link to="/" aria-label="LVTV Clean Service" className="relative block">
+      {/* Logo bleu (original) */}
       <img
-        src={`${import.meta.env.BASE_URL}images/brand/lvtv-clean-service-logo.png`}
+        src={src}
         alt="LVTV Clean Service"
-        className="h-12 w-auto object-contain"
+        className={`h-12 w-auto object-contain transition-opacity duration-500 ease-in-out ${white ? "opacity-0" : "opacity-100"}`}
+      />
+      {/* Version blanche superposée : fondu enchaîné fluide entre les deux */}
+      <img
+        src={src}
+        alt=""
+        aria-hidden="true"
+        className={`absolute inset-0 h-12 w-auto object-contain brightness-0 invert transition-opacity duration-500 ease-in-out ${white ? "opacity-100" : "opacity-0"}`}
       />
     </Link>
   );
@@ -98,7 +163,7 @@ function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Full-screen background image */}
       <div className="absolute inset-0">
         <picture>
@@ -359,8 +424,8 @@ function AboutSection() {
               </p>
               <div className="flex flex-col gap-2 mb-7">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Phone className="w-4 h-4 text-teal-500 shrink-0" />
-                  <a href="tel:+33609702019" className="hover:text-teal-600 transition-colors">+33 6 09 70 20 19</a>
+                  <WhatsAppIcon className="w-4 h-4 text-teal-500 shrink-0" />
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 transition-colors">{PHONE_DISPLAY}</a>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Mail className="w-4 h-4 text-teal-500 shrink-0" />
@@ -597,8 +662,8 @@ function Footer() {
               L'excellence du nettoyage de vitres en France. Transparence, professionnalisme et respect de l'environnement.
             </p>
             <div className="mt-4 space-y-1.5">
-              <a href="tel:+33609702019" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
-                <Phone className="w-3.5 h-3.5" /> +33 6 09 70 20 19
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
+                <WhatsAppIcon className="w-3.5 h-3.5" /> {PHONE_DISPLAY}
               </a>
               <a href="mailto:Lvtvcleanservice@gmail.com" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
                 <Mail className="w-3.5 h-3.5" /> Lvtvcleanservice@gmail.com
@@ -640,7 +705,10 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-gray-100 gap-4">
-          <p className="text-xs text-gray-400">© {year} LVTV Clean Service. Tous droits réservés.</p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-xs text-gray-400">© {year} LVTV Clean Service. Tous droits réservés.</p>
+            <DevelopedBy />
+          </div>
           <div className="flex items-center gap-4">
             <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="Instagram">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
