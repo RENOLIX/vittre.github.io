@@ -21,7 +21,7 @@ export default function LegalPage() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" aria-label="LVTV Clean Service – accueil">
             <img
-              src={`${import.meta.env.BASE_URL}images/brand/lvtv-logo.png`}
+              src={`${import.meta.env.BASE_URL}images/brand/lvtv-logo.webp`}
               alt="LVTV Clean Service"
               width={108}
               height={48}

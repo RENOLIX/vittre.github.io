@@ -6,7 +6,7 @@ function Logo() {
   return (
     <Link to="/" aria-label="LVTV Clean Service">
       <img
-        src={`${import.meta.env.BASE_URL}images/brand/lvtv-logo.png`}
+        src={`${import.meta.env.BASE_URL}images/brand/lvtv-logo.webp`}
         alt="LVTV Clean Service – nettoyage de vitres en Moselle"
         width={108}
         height={48}
@@ -26,13 +26,13 @@ const values = [
 const realizationItems = [
   {
     type: "image",
-    src: `${import.meta.env.BASE_URL}images/realisations/vitres-pergola-moselle.jpg`,
+    src: `${import.meta.env.BASE_URL}images/realisations/vitres-pergola-moselle.webp`,
     title: "Baie vitrée chez un particulier",
     desc: "Nettoyage de véranda et baies vitrées en Moselle : un rendu net et lumineux.",
   },
   {
     type: "image",
-    src: `${import.meta.env.BASE_URL}images/realisations/avant-apres-vitrine-moselle.jpg`,
+    src: `${import.meta.env.BASE_URL}images/realisations/avant-apres-vitrine-moselle.webp`,
     title: "Avant / après vitrine",
     desc: "Nettoyage de vitrine de commerce avec résultat visible.",
   },
@@ -47,7 +47,7 @@ const realizationItems = [
 function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}images/brand/snapchat-ghost.png`}
+      src={`${import.meta.env.BASE_URL}images/brand/snapchat-ghost-48.png`}
       alt=""
       aria-hidden="true"
       className={className}
@@ -103,7 +103,7 @@ export default function AboutPage() {
           <div>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1719499757876-346424e8f67d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+                src="https://images.unsplash.com/photo-1719499757876-346424e8f67d?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixlib=rb-4.1.0&q=70&w=800"
                 alt="Laveur de vitres de LVTV Clean Service en Moselle"
                 loading="lazy"
                 decoding="async"

@@ -9,7 +9,13 @@ const dist = path.join(root, "dist");
 const serverEntry = pathToFileURL(path.join(root, "dist-server", "entry-server.js")).href;
 const { render, headTagsFor } = await import(serverEntry);
 
-const template = readFileSync(path.join(dist, "index.html"), "utf-8");
+let template = readFileSync(path.join(dist, "index.html"), "utf-8");
+
+// CSS intégré directement dans la page : supprime une requête qui bloquait l'affichage.
+template = template.replace(/<link rel="stylesheet" crossorigin href="(\/assets\/[^"]+\.css)">/, (_, href) => {
+  const css = readFileSync(path.join(dist, href), "utf-8");
+  return `<style>${css}</style>`;
+});
 if (!template.includes("<!--seo-head-->") || !template.includes("<!--app-html-->")) {
   throw new Error("index.html : marqueurs <!--seo-head--> / <!--app-html--> introuvables");
 }
@@ -19,6 +25,7 @@ const routes = [
   { url: "/about", seo: "/about", file: "about.html" },
   { url: "/nettoyage-vitres-metz", seo: "/nettoyage-vitres-metz", file: "nettoyage-vitres-metz.html" },
   { url: "/mentions-legales", seo: "/mentions-legales", file: "mentions-legales.html" },
+  { url: "/nettoyage-vitres-credit-impot", seo: "/nettoyage-vitres-credit-impot", file: "nettoyage-vitres-credit-impot.html" },
   { url: "/__404__", seo: "/404", file: "404.html" },
 ];
 

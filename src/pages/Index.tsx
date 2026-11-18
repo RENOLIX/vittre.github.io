@@ -137,7 +137,7 @@ function Navbar() {
 }
 
 function Logo({ white = false }: { white?: boolean }) {
-  const src = `${import.meta.env.BASE_URL}images/brand/lvtv-logo.png`;
+  const src = `${import.meta.env.BASE_URL}images/brand/lvtv-logo.webp`;
   return (
     <Link to="/" aria-label="LVTV Clean Service – accueil" className="relative block">
       {/* Logo bleu (original) */}
@@ -164,7 +164,7 @@ function Logo({ white = false }: { white?: boolean }) {
 function SnapchatIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}images/brand/snapchat-ghost.png`}
+      src={`${import.meta.env.BASE_URL}images/brand/snapchat-ghost-48.png`}
       alt=""
       aria-hidden="true"
       className={className}
@@ -180,12 +180,12 @@ function HeroSection() {
         <picture>
           <source
             media="(max-width: 767px)"
-            srcSet={`${import.meta.env.BASE_URL}images/hero/hero-mobile-opt.jpg`}
-            width={900}
-            height={1256}
+            srcSet={`${import.meta.env.BASE_URL}images/hero/hero-mobile.webp`}
+            width={750}
+            height={1047}
           />
           <img
-            src={`${import.meta.env.BASE_URL}images/hero/hero-desktop.jpg`}
+            src={`${import.meta.env.BASE_URL}images/hero/hero-desktop.webp`}
             alt="Laveurs de vitres professionnels nettoyant une façade vitrée en Moselle"
             width={1672}
             height={941}
@@ -283,7 +283,7 @@ function WindowShowcase() {
             aria-label="Vitres propres et lumineuses après un nettoyage par LVTV Clean Service"
             className="hidden h-80 w-full md:block"
             style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-desktop.jpg)`,
+              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-desktop.webp)`,
               backgroundAttachment: "fixed",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
@@ -295,7 +295,7 @@ function WindowShowcase() {
             aria-label="Vitres propres et lumineuses après un nettoyage par LVTV Clean Service"
             className="h-80 w-full md:hidden"
             style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-mobile-opt.jpg)`,
+              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-mobile.webp)`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -450,7 +450,7 @@ function AboutSection() {
             {/* Image */}
             <div className="relative h-72 md:h-auto">
               <img
-                src="https://images.unsplash.com/photo-1761689502577-0013be84f1bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+                src="https://images.unsplash.com/photo-1761689502577-0013be84f1bf?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixlib=rb-4.1.0&q=70&w=800"
                 alt="Laveur de vitres LVTV Clean Service en intervention en Moselle"
                 loading="lazy"
                 decoding="async"
@@ -742,6 +742,12 @@ function CreditImpotSection() {
               >
                 <WhatsAppIcon className="w-4 h-4" /> Demander mon devis
               </a>
+              <Link
+                to="/nettoyage-vitres-credit-impot"
+                className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-teal-300 hover:text-teal-200 sm:ml-4 sm:mt-0 sm:inline-flex"
+              >
+                Tout savoir sur le crédit d'impôt <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
             {/* Exemple chiffré */}
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
@@ -919,7 +925,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm text-gray-500">
               <li><Link to="/mentions-legales" className="hover:text-gray-900 transition-colors cursor-pointer">Mentions légales</Link></li>
               <li><a href="/mentions-legales#confidentialite" className="hover:text-gray-900 transition-colors cursor-pointer">Politique de confidentialité</a></li>
-              <li><a href="/#credit-impot" className="hover:text-gray-900 transition-colors cursor-pointer">Crédit d'impôt 50 %</a></li>
+              <li><Link to="/nettoyage-vitres-credit-impot" className="hover:text-gray-900 transition-colors cursor-pointer">Crédit d'impôt 50 %</Link></li>
             </ul>
           </div>
         </div>

@@ -102,6 +102,29 @@ export const METZ_FAQ: { q: string; a: string }[] = [
   },
 ];
 
+export const CREDIT_FAQ: { q: string; a: string }[] = [
+  {
+    q: "Le lavage de vitres est-il déductible des impôts ?",
+    a: "Oui, pour les particuliers. Le nettoyage de vitres à domicile fait partie des services à la personne (entretien de la maison) et ouvre droit à un crédit d'impôt égal à 50 % des sommes versées, selon l'article 199 sexdecies du Code général des impôts.",
+  },
+  {
+    q: "Faut-il être imposable pour profiter des 50 % ?",
+    a: "Non. Il s'agit d'un crédit d'impôt et non d'une simple réduction : si vous n'êtes pas imposable, ou si le crédit dépasse votre impôt, la différence vous est remboursée par l'administration fiscale.",
+  },
+  {
+    q: "Quel est le plafond du crédit d'impôt pour le nettoyage de vitres ?",
+    a: "Les dépenses de services à la personne sont retenues dans la limite de 12 000 € par an et par foyer, soit 6 000 € de crédit d'impôt. Ce plafond est majoré de 1 500 € par enfant à charge ou par membre du foyer âgé de plus de 65 ans, sans dépasser 15 000 €, et porté à 20 000 € en cas d'invalidité.",
+  },
+  {
+    q: "Comment déclarer le crédit d'impôt pour mon nettoyage de vitres ?",
+    a: "Vous recevez une attestation fiscale annuelle récapitulant les sommes payées. Lors de votre déclaration de revenus, vous reportez ce montant dans la rubrique des services à la personne (case 7DB) et l'administration calcule automatiquement votre crédit d'impôt.",
+  },
+  {
+    q: "Les professionnels ont-ils droit au crédit d'impôt ?",
+    a: "Non. Le crédit d'impôt services à la personne est réservé aux particuliers, pour des prestations réalisées à leur domicile. Le nettoyage des vitrines de commerces ou des bureaux n'y ouvre pas droit.",
+  },
+];
+
 export type PageSeo = {
   path: string;
   title: string;
@@ -112,7 +135,7 @@ export type PageSeo = {
 export const PAGES: Record<string, PageSeo> = {
   "/": {
     path: "/",
-    title: "Nettoyage Vitres Moselle | Lavage de Vitres – LVTV Clean Service",
+    title: "Nettoyage Vitres Moselle -50 % Crédit d'Impôt | LVTV Clean Service",
     description:
       "Nettoyage et lavage de vitres en Moselle (57) et Meurthe-et-Moselle (54) : maisons, vitrines, bureaux. 50 % de crédit d'impôt pour les particuliers, devis gratuit.",
   },
@@ -127,6 +150,12 @@ export const PAGES: Record<string, PageSeo> = {
     title: "Nettoyage Vitres Metz | Laveur de Vitres à Metz – LVTV Clean Service",
     description:
       "Nettoyage de vitres à Metz et Metz Métropole : appartements, maisons, vitrines, bureaux. Laveur de vitres basé à Amnéville, intervention sous 48h, devis gratuit.",
+  },
+  "/nettoyage-vitres-credit-impot": {
+    path: "/nettoyage-vitres-credit-impot",
+    title: "Nettoyage de Vitres -50 % Crédit d'Impôt | Moselle – LVTV Clean Service",
+    description:
+      "Lavage de vitres à domicile avec 50 % de crédit d'impôt en Moselle : conditions, plafond de 12 000 €, exemples chiffrés et déclaration. Devis gratuit à Metz, Thionville, Amnéville.",
   },
   "/mentions-legales": {
     path: "/mentions-legales",
@@ -204,6 +233,13 @@ const website = {
   publisher: { "@id": `${SITE_URL}/#business` },
 };
 
+const BREADCRUMB_NAMES: Record<string, string> = {
+  "/about": "À propos",
+  "/nettoyage-vitres-metz": "Nettoyage de vitres à Metz",
+  "/nettoyage-vitres-credit-impot": "Crédit d'impôt 50 %",
+  "/mentions-legales": "Mentions légales",
+};
+
 export function jsonLdFor(path: string) {
   const page = PAGES[path];
   const url = `${SITE_URL}${path === "/" ? "/" : path}`;
@@ -230,11 +266,13 @@ export function jsonLdFor(path: string) {
       })),
     });
   }
-  if (path === "/nettoyage-vitres-metz") {
+  const pageFaq =
+    path === "/nettoyage-vitres-metz" ? METZ_FAQ : path === "/nettoyage-vitres-credit-impot" ? CREDIT_FAQ : null;
+  if (pageFaq) {
     graph.push({
       "@type": "FAQPage",
       "@id": `${url}#faq`,
-      mainEntity: METZ_FAQ.map(({ q, a }) => ({
+      mainEntity: pageFaq.map(({ q, a }) => ({
         "@type": "Question",
         name: q,
         acceptedAnswer: { "@type": "Answer", text: a },
@@ -249,7 +287,7 @@ export function jsonLdFor(path: string) {
         {
           "@type": "ListItem",
           position: 2,
-          name: path === "/about" ? "À propos" : path === "/mentions-legales" ? "Mentions légales" : "Nettoyage de vitres à Metz",
+          name: BREADCRUMB_NAMES[path] ?? page.title,
           item: url,
         },
       ],

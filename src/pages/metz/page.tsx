@@ -33,7 +33,7 @@ function Logo() {
   return (
     <Link to="/" aria-label="LVTV Clean Service – accueil">
       <img
-        src={`${base}images/brand/lvtv-logo.png`}
+        src={`${base}images/brand/lvtv-logo.webp`}
         alt="LVTV Clean Service – nettoyage de vitres en Moselle"
         width={108}
         height={48}
@@ -97,7 +97,13 @@ export default function MetzPage() {
               </a>
             </div>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-gray-500">
-              {["50 % de crédit d'impôt (particuliers)", "Intervention sous 48h", "Devis gratuit et sans engagement", "Disponible 7j/7"].map((t) => (
+              <li className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-teal-700" />
+                <Link to="/nettoyage-vitres-credit-impot" className="font-semibold text-teal-700 underline hover:text-teal-800">
+                  50 % de crédit d'impôt (particuliers)
+                </Link>
+              </li>
+              {["Intervention sous 48h", "Devis gratuit et sans engagement", "Disponible 7j/7"].map((t) => (
                 <li key={t} className="flex items-center gap-1.5"><Check className="w-4 h-4 text-teal-700" />{t}</li>
               ))}
             </ul>
@@ -128,10 +134,10 @@ export default function MetzPage() {
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5">
             <figure className="overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
               <img
-                src={`${base}images/realisations/vitres-pergola-moselle.jpg`}
+                src={`${base}images/realisations/vitres-pergola-moselle.webp`}
                 alt="Véranda aux vitres nettoyées par LVTV Clean Service en Moselle"
-                width={1000}
-                height={1333}
+                width={800}
+                height={1066}
                 loading="lazy"
                 decoding="async"
                 className="h-80 w-full object-cover"
@@ -140,10 +146,10 @@ export default function MetzPage() {
             </figure>
             <figure className="overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
               <img
-                src={`${base}images/realisations/avant-apres-vitrine-moselle.jpg`}
+                src={`${base}images/realisations/avant-apres-vitrine-moselle.webp`}
                 alt="Avant et après le nettoyage d'une vitrine de commerce"
-                width={1000}
-                height={1320}
+                width={800}
+                height={1056}
                 loading="lazy"
                 decoding="async"
                 className="h-80 w-full object-cover"

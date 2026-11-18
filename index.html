@@ -13,22 +13,34 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/images/brand/icon-512.png" />
     <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preload" as="image" href="/images/hero/hero-desktop.jpg" media="(min-width: 768px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/images/hero/hero-mobile-opt.jpg" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/hero/hero-desktop.webp" type="image/webp" media="(min-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/hero/hero-mobile.webp" type="image/webp" media="(max-width: 767px)" fetchpriority="high" />
+    <!-- Police chargée sans bloquer l'affichage -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18214717965"></script>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    </noscript>
+    <!-- Google tag (gtag.js) : chargé après l'affichage de la page -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-18214717965');
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18214717965';
+          document.head.appendChild(s);
+        }, 1500);
+      });
     </script>
   </head>
   <body>
