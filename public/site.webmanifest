@@ -1,0 +1,13 @@
+{
+  "name": "LVTV Clean Service – Nettoyage de vitres en Moselle",
+  "short_name": "LVTV Clean",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#111827",
+  "icons": [
+    { "src": "/images/brand/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/images/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

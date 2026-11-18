@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lvtvcleanservice.fr/</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-18</lastmod>
+    <image:image>
+      <image:loc>https://lvtvcleanservice.fr/images/hero/hero-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lvtvcleanservice.fr/images/showcase/lvtv-showcase-desktop.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://lvtvcleanservice.fr/about</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-18</lastmod>
+    <image:image>
+      <image:loc>https://lvtvcleanservice.fr/images/realisations/vitres-pergola-moselle.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lvtvcleanservice.fr/images/realisations/avant-apres-vitrine-moselle.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>

@@ -6,8 +6,10 @@ function Logo() {
   return (
     <Link to="/" aria-label="LVTV Clean Service">
       <img
-        src={`${import.meta.env.BASE_URL}images/brand/lvtv-clean-service-logo.png`}
-        alt="LVTV Clean Service"
+        src={`${import.meta.env.BASE_URL}images/brand/lvtv-logo.png`}
+        alt="LVTV Clean Service – nettoyage de vitres en Moselle"
+        width={108}
+        height={48}
         className="h-12 w-auto object-contain"
       />
     </Link>
@@ -24,15 +26,15 @@ const values = [
 const realizationItems = [
   {
     type: "image",
-    src: `${import.meta.env.BASE_URL}images/realisations/vitres_pergola.jpeg`,
+    src: `${import.meta.env.BASE_URL}images/realisations/vitres-pergola-moselle.jpg`,
     title: "Baie vitrée chez un particulier",
-    desc: "Un rendu net et lumineux après intervention.",
+    desc: "Nettoyage de véranda et baies vitrées en Moselle : un rendu net et lumineux.",
   },
   {
     type: "image",
-    src: `${import.meta.env.BASE_URL}images/realisations/avant-apres-vitrine.jpeg`,
+    src: `${import.meta.env.BASE_URL}images/realisations/avant-apres-vitrine-moselle.jpg`,
     title: "Avant / après vitrine",
-    desc: "Nettoyage de vitrine avec résultat visible.",
+    desc: "Nettoyage de vitrine de commerce avec résultat visible.",
   },
   {
     type: "video",
@@ -70,13 +72,14 @@ export default function AboutPage() {
             <Link to="/" className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
               <ArrowLeft className="w-4 h-4" /> Retour
             </Link>
-            <Link to="/" className="bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer">
+            <a href="/#devis" className="bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer">
               Devis Gratuit
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
 
+      <main>
       {/* Hero about */}
       <section className="pt-32 pb-16 px-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{
@@ -86,7 +89,7 @@ export default function AboutPage() {
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full opacity-20"
           style={{ background: "radial-gradient(ellipse, #5eead4 0%, #2dd4bf 30%, transparent 70%)" }} />
         <div className="max-w-4xl mx-auto text-center relative">
-          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-4">À propos</span>
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-4">À propos · Laveur de vitres en Moselle</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">LVTV CLEAN SERVICE</h1>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
             LVTV CLEAN SERVICE est une entreprise locale basée en Moselle, spécialisée dans le lavage de vitres pour les particuliers et les professionnels. Née pour répondre aux besoins d'entretien régulier des vitrines de commerçants et d'artisans locaux, notre structure s'est rapidement développée. Aujourd'hui, nous mettons également notre expertise au service des particuliers, en intervenant avec réactivité sur l'ensemble des départements de la Moselle et de la Meurthe-et-Moselle          </p>
@@ -100,7 +103,9 @@ export default function AboutPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <img
                 src="https://images.unsplash.com/photo-1719499757876-346424e8f67d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Équipe LVTV Clean Service"
+                alt="Laveur de vitres de LVTV Clean Service en Moselle"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-96 object-cover"
               />
             </div>
@@ -169,6 +174,8 @@ export default function AboutPage() {
                   {item.type === "video" ? (
                     <video
                       src={item.src}
+                      title="Vidéo d'un nettoyage de vitres par LVTV Clean Service"
+                      aria-label="Vidéo d'un nettoyage de vitres par LVTV Clean Service"
                       className="h-full w-full object-cover"
                       controls
                       playsInline
@@ -218,6 +225,7 @@ export default function AboutPage() {
           </a>
         </div>
       </section>
+      </main>
 
       {/* Footer simple */}
       <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-400 flex flex-col items-center gap-1">

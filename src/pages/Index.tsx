@@ -1,20 +1,25 @@
 import { type FormEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Mail, ArrowRight, Wind, Layers, MapPin } from "lucide-react";
+import { Building2, Home, ShoppingBag, Briefcase, Check, Lock, Mail, ArrowRight, Wind, Layers, MapPin, ChevronDown } from "lucide-react";
 import StaggeredMenu from "@/components/StaggeredMenu.tsx";
 import { DevelopedBy, FloatingWhatsApp, PHONE_DISPLAY, WHATSAPP_URL, WhatsAppIcon } from "@/components/WhatsApp.tsx";
+import { CITIES_54, CITIES_57, FAQ } from "@/seo.ts";
 
 export default function Index() {
   return (
     <div className="min-h-screen bg-white font-sans">
       <Navbar />
-      <HeroSection />
-      <SloganBanner />
-      <AboutSection />
-      <AllServicesSection />
-      <WindowShowcase />
-      <ServicesSection />
-      <DevisSection />
+      <main>
+        <HeroSection />
+        <SloganBanner />
+        <AboutSection />
+        <AllServicesSection />
+        <WindowShowcase />
+        <ServicesSection />
+        <ZonesSection />
+        <DevisSection />
+        <FaqSection />
+      </main>
       <Footer />
       <FloatingWhatsApp />
     </div>
@@ -24,6 +29,7 @@ export default function Index() {
 const menuItems = [
   { label: "Services", ariaLabel: "Voir les services", link: "#services" },
   { label: "Méthode", ariaLabel: "Notre méthode", link: "#methode" },
+  { label: "Zones", ariaLabel: "Zones d'intervention en Moselle", link: "#zones" },
   { label: "À propos", ariaLabel: "À propos de LVTV Clean Service", link: `${import.meta.env.BASE_URL}about` },
   { label: "Devis", ariaLabel: "Devis gratuit", link: "#devis" },
 ];
@@ -85,6 +91,7 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#services" className={linkClass}>Services</a>
             <a href="#methode" className={linkClass}>Notre Méthode</a>
+            <a href="#zones" className={linkClass}>Zones</a>
             <Link to="/about" className={linkClass}>À propos</Link>
           </div>
           <div className="flex items-center gap-4">
@@ -130,13 +137,15 @@ function Navbar() {
 }
 
 function Logo({ white = false }: { white?: boolean }) {
-  const src = `${import.meta.env.BASE_URL}images/brand/lvtv-clean-service-logo.png`;
+  const src = `${import.meta.env.BASE_URL}images/brand/lvtv-logo.png`;
   return (
-    <Link to="/" aria-label="LVTV Clean Service" className="relative block">
+    <Link to="/" aria-label="LVTV Clean Service – accueil" className="relative block">
       {/* Logo bleu (original) */}
       <img
         src={src}
-        alt="LVTV Clean Service"
+        alt="LVTV Clean Service – nettoyage de vitres en Moselle"
+        width={108}
+        height={48}
         className={`h-12 w-auto object-contain transition-opacity duration-500 ease-in-out ${white ? "opacity-0" : "opacity-100"}`}
       />
       {/* Version blanche superposée : fondu enchaîné fluide entre les deux */}
@@ -144,6 +153,8 @@ function Logo({ white = false }: { white?: boolean }) {
         src={src}
         alt=""
         aria-hidden="true"
+        width={108}
+        height={48}
         className={`absolute inset-0 h-12 w-auto object-contain brightness-0 invert transition-opacity duration-500 ease-in-out ${white ? "opacity-100" : "opacity-0"}`}
       />
     </Link>
@@ -169,11 +180,17 @@ function HeroSection() {
         <picture>
           <source
             media="(max-width: 767px)"
-            srcSet={`${import.meta.env.BASE_URL}images/hero/hero-mobile.jpg`}
+            srcSet={`${import.meta.env.BASE_URL}images/hero/hero-mobile-opt.jpg`}
+            width={900}
+            height={1256}
           />
           <img
-            src={`${import.meta.env.BASE_URL}images/hero/hero-desktop.png`}
-            alt=""
+            src={`${import.meta.env.BASE_URL}images/hero/hero-desktop.jpg`}
+            alt="Laveurs de vitres professionnels nettoyant une façade vitrée en Moselle"
+            width={1672}
+            height={941}
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover"
           />
         </picture>
@@ -186,24 +203,29 @@ function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full backdrop-blur-sm mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            En France · Intervention sous 48h
+            Moselle (57) · Meurthe-et-Moselle (54) · Intervention sous 48h
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.05] mb-6 tracking-tight">
-            Des vitres<br />
-            <span className="text-teal-400">impeccables.</span>
+          <h1 className="text-white mb-6">
+            <span className="block text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-white/70 mb-4">
+              Nettoyage de vitres en Moselle
+            </span>
+            <span className="block text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight">
+              Des vitres<br />
+              <span className="text-teal-400">impeccables.</span>
+            </span>
           </h1>
 
           <p className="text-white/60 text-lg max-w-lg leading-relaxed mb-10">
-            Nettoyage professionnel pour particuliers et professionnels. Résultat sans traces, garanti.
+            Lavage de vitres professionnel pour particuliers et professionnels à Metz, Thionville, Forbach, Sarreguemines, Nancy et dans toute la Moselle. Résultat sans traces, garanti.
           </p>
 
           {/* Availability and CTA */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
             <div className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white backdrop-blur-sm">
               <MapPin className="h-4 w-4 text-teal-400" />
-              Disponible en France
+              Moselle &amp; Meurthe-et-Moselle
             </div>
             <a href="#devis" className="text-center border border-white/20 text-white text-sm font-medium px-7 py-3.5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer whitespace-nowrap">
               Devis gratuit
@@ -242,9 +264,11 @@ function WindowShowcase() {
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
           <div
+            role="img"
+            aria-label="Vitres propres et lumineuses après un nettoyage par LVTV Clean Service"
             className="hidden h-80 w-full md:block"
             style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-desktop.png)`,
+              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-desktop.jpg)`,
               backgroundAttachment: "fixed",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
@@ -252,9 +276,11 @@ function WindowShowcase() {
             }}
           />
           <div
+            role="img"
+            aria-label="Vitres propres et lumineuses après un nettoyage par LVTV Clean Service"
             className="h-80 w-full md:hidden"
             style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-mobile.jpg)`,
+              backgroundImage: `url(${import.meta.env.BASE_URL}images/showcase/lvtv-showcase-mobile-opt.jpg)`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -321,8 +347,8 @@ function AllServicesSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Prestations</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Tous nos services</h2>
-          <p className="text-gray-500">Particulier ou professionnel, nous intervenons sur tout type de chantier.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Nos services de nettoyage de vitres</h2>
+          <p className="text-gray-500">Particulier ou professionnel, nous intervenons sur tout type de chantier en Moselle et Meurthe-et-Moselle.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {allServices.map((s) => (
@@ -410,7 +436,9 @@ function AboutSection() {
             <div className="relative h-72 md:h-auto">
               <img
                 src="https://images.unsplash.com/photo-1761689502577-0013be84f1bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Équipe LVTV Clean Service"
+                alt="Laveur de vitres LVTV Clean Service en intervention en Moselle"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 md:to-white/0" />
@@ -420,7 +448,7 @@ function AboutSection() {
               <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">À propos</span>
               <h2 className="text-3xl font-extrabold text-gray-900 mb-4">LVTV Clean Service</h2>
               <p className="text-gray-500 leading-relaxed mb-4 text-sm">
-                LVTV Clean Service est une société locale spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
+                LVTV Clean Service est une société locale basée en Moselle, spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
               </p>
               <div className="flex flex-col gap-2 mb-7">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -650,6 +678,73 @@ function DevisSection() {
   );
 }
 
+function ZonesSection() {
+  const groups = [
+    { title: "Moselle (57)", cities: CITIES_57 },
+    { title: "Meurthe-et-Moselle (54)", cities: CITIES_54 },
+  ];
+  return (
+    <section id="zones" className="px-6 py-20 bg-gray-50">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Zones d'intervention</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+            Lavage de vitres en Moselle et Meurthe-et-Moselle
+          </h2>
+          <p className="text-gray-500 max-w-2xl mx-auto">
+            Basés en Moselle, nous nettoyons les vitres des particuliers, commerces et entreprises de Metz à Nancy, en passant par Thionville, Forbach et Sarreguemines.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {groups.map((g) => (
+            <div key={g.title} className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
+              <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-5">
+                <MapPin className="w-5 h-5 text-teal-500" /> Nettoyage de vitres en {g.title}
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {g.cities.map((c) => (
+                  <li key={c} className="text-xs bg-teal-50 text-teal-700 font-medium px-3 py-1.5 rounded-full">{c}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="text-center text-sm text-gray-500 mt-8">
+          Votre commune n'est pas dans la liste ?{" "}
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-600 hover:text-teal-700">
+            Écrivez-nous sur WhatsApp
+          </a>
+          , nous étudions chaque demande.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function FaqSection() {
+  return (
+    <section id="faq" className="px-6 py-20 bg-gray-50">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">FAQ</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Questions fréquentes sur le nettoyage de vitres</h2>
+        </div>
+        <div className="space-y-3">
+          {FAQ.map(({ q, a }) => (
+            <details key={q} className="group bg-white rounded-2xl border border-gray-100 shadow-sm open:shadow-md transition-shadow">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-gray-900 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-sm md:text-base">{q}</h3>
+                <ChevronDown className="w-5 h-5 shrink-0 text-teal-500 transition-transform duration-300 group-open:rotate-180" />
+              </summary>
+              <p className="px-6 pb-5 text-sm text-gray-500 leading-relaxed">{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -659,7 +754,7 @@ function Footer() {
           <div>
             <Logo />
             <p className="text-sm text-gray-500 mt-4 leading-relaxed">
-              L'excellence du nettoyage de vitres en France. Transparence, professionnalisme et respect de l'environnement.
+              Nettoyage et lavage de vitres en Moselle et Meurthe-et-Moselle. Transparence, professionnalisme et respect de l'environnement.
             </p>
             <div className="mt-4 space-y-1.5">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
@@ -690,8 +785,13 @@ function Footer() {
             <h4 className="text-sm font-semibold text-gray-900 mb-4">Entreprise</h4>
             <ul className="space-y-2.5 text-sm text-gray-500">
               <li><Link to="/about" className="hover:text-gray-900 transition-colors cursor-pointer">À propos</Link></li>
-              {["Notre méthode", "Contact"].map((item) => (
-                <li key={item}><a href="#" className="hover:text-gray-900 transition-colors cursor-pointer">{item}</a></li>
+              {[
+                { label: "Notre méthode", href: "#methode" },
+                { label: "Zones d'intervention", href: "#zones" },
+                { label: "FAQ", href: "#faq" },
+                { label: "Devis gratuit", href: "#devis" },
+              ].map((item) => (
+                <li key={item.label}><a href={item.href} className="hover:text-gray-900 transition-colors cursor-pointer">{item.label}</a></li>
               ))}
             </ul>
           </div>
