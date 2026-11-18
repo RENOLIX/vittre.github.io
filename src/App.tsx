@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect, useLayoutEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation, useNavigationType } from "react-router-dom";
 import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/about/page.tsx";
 import MetzPage from "./pages/metz/page.tsx";
@@ -21,9 +21,31 @@ function PageSeo() {
   return null;
 }
 
+/**
+ * Changement de page : on repart tout en haut (ou sur la section visée par un lien "#ancre").
+ * Le bouton "retour" du navigateur garde sa position habituelle.
+ */
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  const navigationType = useNavigationType();
+  useLayoutEffect(() => {
+    if (navigationType === "POP") return;
+    if (hash) {
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (target) {
+        target.scrollIntoView({ behavior: "instant", block: "start" });
+        return;
+      }
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname, hash, navigationType]);
+  return null;
+}
+
 export function AppRoutes() {
   return (
     <>
+      <ScrollToTop />
       <PageSeo />
       <Routes>
         <Route path="/" element={<Index />} />

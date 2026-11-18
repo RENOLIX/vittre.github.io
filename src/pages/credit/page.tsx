@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Check, ChevronDown, FileCheck, Home, Users, Wallet, X } from "lucide-react";
 import { FloatingWhatsApp, PHONE_DISPLAY, WHATSAPP_URL, WhatsAppIcon } from "@/components/WhatsApp.tsx";
-import { Footer } from "@/pages/Index.tsx";
+import { Footer, Logo, useOnHero } from "@/pages/Index.tsx";
 import { CREDIT_FAQ } from "@/seo.ts";
 
 const examples = [
@@ -13,27 +13,36 @@ const examples = [
 const euro = (n: number) => `${n.toLocaleString("fr-FR")} €`;
 
 export default function CreditImpotPage() {
+  const onHero = useOnHero();
   return (
     <div className="min-h-screen bg-white font-sans">
       <nav
-        className="fixed top-0 left-0 right-0 z-50 border-b border-white/20"
-        style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-500 ease-out ${
+          onHero ? "border-white/10" : "border-white/20 shadow-sm shadow-black/[0.03]"
+        }`}
+        style={{
+          backgroundColor: onHero ? "rgba(10,15,20,0.18)" : "rgba(255,255,255,0.55)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" aria-label="LVTV Clean Service – accueil">
-            <img
-              src={`${import.meta.env.BASE_URL}images/brand/lvtv-logo.webp`}
-              alt="LVTV Clean Service – nettoyage de vitres en Moselle"
-              width={108}
-              height={48}
-              className="h-12 w-auto object-contain"
-            />
-          </Link>
+          <Logo white={onHero} />
           <div className="flex items-center gap-4">
-            <Link to="/" className="hidden sm:flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors">
+            <Link
+              to="/"
+              className={`hidden sm:flex items-center gap-2 text-sm transition-colors duration-500 ${
+                onHero ? "text-white/85 hover:text-white" : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
               <ArrowLeft className="w-4 h-4" /> Accueil
             </Link>
-            <a href="/#devis" className="bg-gray-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
+            <a
+              href="/#devis"
+              className={`text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-500 ${
+                onHero ? "bg-white text-gray-900 hover:bg-white/90" : "bg-gray-900 text-white hover:bg-gray-800"
+              }`}
+            >
               Devis Gratuit
             </a>
           </div>
@@ -42,7 +51,7 @@ export default function CreditImpotPage() {
 
       <main>
         {/* En-tête */}
-        <section className="pt-32 pb-16 px-6 bg-gray-900">
+        <section id="hero" className="pt-32 pb-16 px-6 bg-gray-900">
           <div className="max-w-4xl mx-auto">
             <nav aria-label="Fil d'Ariane" className="text-xs text-gray-400 mb-6">
               <Link to="/" className="hover:text-white">Accueil</Link>

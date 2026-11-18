@@ -41,7 +41,7 @@ const socialItems = [
 ];
 
 /** true tant que le hero est visible sous la barre de navigation */
-function useOnHero(navHeight = 64) {
+export function useOnHero(navHeight = 64) {
   const [onHero, setOnHero] = useState(true);
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -136,7 +136,7 @@ function Navbar() {
   );
 }
 
-function Logo({ white = false }: { white?: boolean }) {
+export function Logo({ white = false }: { white?: boolean }) {
   const src = `${import.meta.env.BASE_URL}images/brand/lvtv-logo.webp`;
   return (
     <Link to="/" aria-label="LVTV Clean Service – accueil" className="relative block">
