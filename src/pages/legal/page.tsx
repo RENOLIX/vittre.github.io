@@ -50,7 +50,7 @@ export default function LegalPage() {
               <li>Siège : {LEGAL.registeredOffice}</li>
               <li>Établissement d'exploitation : {ADDRESS.street}, {ADDRESS.postalCode} {ADDRESS.city}</li>
               <li>Téléphone / WhatsApp : {PHONE_DISPLAY}</li>
-              <li>Email : <a href={`mailto:${EMAIL}`} className="text-teal-600 hover:text-teal-700">{EMAIL}</a></li>
+              <li>Email : <a href={`mailto:${EMAIL}`} className="text-teal-700 hover:text-teal-800">{EMAIL}</a></li>
             </ul>
             <p>Directeur de la publication : {LEGAL.owner}.</p>
           </Section>
@@ -58,14 +58,14 @@ export default function LegalPage() {
           <Section title="Hébergement">
             <p>
               Le site est hébergé par GitHub, Inc. (service GitHub Pages), 88 Colton Street, San Francisco, CA 94107, États-Unis —{" "}
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">github.com</a>.
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:text-teal-800">github.com</a>.
             </p>
           </Section>
 
           <Section title="Conception du site">
             <p>
               Site conçu et développé par{" "}
-              <a href="https://sitemagique.com" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">SITEMAGIQUE</a>.
+              <a href="https://sitemagique.com" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:text-teal-800">SITEMAGIQUE</a>.
             </p>
           </Section>
 
@@ -81,7 +81,7 @@ export default function LegalPage() {
               Les informations sur le crédit d'impôt de 50 % (article 199 sexdecies du Code général des impôts) sont données à titre indicatif,
               selon la réglementation en vigueur. Elles concernent uniquement les services à la personne rendus au domicile des particuliers.
               Les conditions exactes sont disponibles sur{" "}
-              <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">impots.gouv.fr</a>.
+              <a href="https://www.impots.gouv.fr" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:text-teal-800">impots.gouv.fr</a>.
             </p>
           </Section>
 
@@ -116,11 +116,11 @@ export default function LegalPage() {
             <p>
               Conformément au Règlement général sur la protection des données (RGPD), vous disposez d'un droit d'accès, de rectification,
               d'effacement, de limitation et d'opposition sur vos données. Pour l'exercer, écrivez-nous à{" "}
-              <a href={`mailto:${EMAIL}`} className="text-teal-600 hover:text-teal-700">{EMAIL}</a>.
+              <a href={`mailto:${EMAIL}`} className="text-teal-700 hover:text-teal-800">{EMAIL}</a>.
             </p>
             <p>
               Vous pouvez également adresser une réclamation à la CNIL :{" "}
-              <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:text-teal-700">cnil.fr</a>.
+              <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:text-teal-800">cnil.fr</a>.
             </p>
           </Section>
         </div>

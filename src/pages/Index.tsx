@@ -325,31 +325,31 @@ function SloganBanner() {
 
 const allServices = [
   {
-    icon: <Home className="w-6 h-6 text-teal-500" />,
+    icon: <Home className="w-6 h-6 text-teal-700" />,
     title: "Maison & Appartement",
     desc: "Nettoyage de toutes vos vitres intérieures et extérieures. Résultat parfait, sans traces ni coulures.",
     tags: ["Intérieur", "Extérieur", "Encadrements"],
   },
   {
-    icon: <ShoppingBag className="w-6 h-6 text-teal-500" />,
+    icon: <ShoppingBag className="w-6 h-6 text-teal-700" />,
     title: "Vitrine de commerce",
     desc: "Une vitrine impeccable attire les clients. Nettoyage régulier de vos devantures et vitrines de boutique.",
     tags: ["Devantures", "Enseignes", "Contrat régulier"],
   },
   {
-    icon: <Layers className="w-6 h-6 text-teal-500" />,
+    icon: <Layers className="w-6 h-6 text-teal-700" />,
     title: "Baies vitrées",
     desc: "Nettoyage spécialisé de grandes baies vitrées, verrières et murs rideaux. Technique sans traces garantie.",
     tags: ["Grande surface", "Sans trace", "Intérieur/Extérieur"],
   },
   {
-    icon: <Wind className="w-6 h-6 text-teal-500" />,
+    icon: <Wind className="w-6 h-6 text-teal-700" />,
     title: "Store & Volet",
     desc: "Dépoussiérage et nettoyage en profondeur de vos stores, volets roulants et jalousies.",
     tags: ["Stores banne", "Volets roulants", "Jalousies"],
   },
   {
-    icon: <Building2 className="w-6 h-6 text-teal-500" />,
+    icon: <Building2 className="w-6 h-6 text-teal-700" />,
     title: "Société & Bureau",
     desc: "Entretien régulier pour entreprises, bureaux et sociétés. Intervention possible hors heures d'ouverture.",
     tags: ["Contrat mensuel", "Hors horaires", "Discret"],
@@ -361,7 +361,7 @@ function AllServicesSection() {
     <section id="services" className="px-6 py-20 bg-gray-50">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Prestations</span>
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-700 uppercase mb-3">Prestations</span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Nos services de nettoyage de vitres</h2>
           <p className="text-gray-500">Particulier ou professionnel, nous intervenons sur tout type de chantier en Moselle et Meurthe-et-Moselle.</p>
         </div>
@@ -375,7 +375,7 @@ function AllServicesSection() {
               <p className="text-sm text-gray-500 leading-relaxed mb-4">{s.desc}</p>
               <div className="flex flex-wrap gap-2">
                 {s.tags.map(t => (
-                  <span key={t} className="text-xs bg-teal-50 text-teal-600 font-medium px-2.5 py-1 rounded-full">{t}</span>
+                  <span key={t} className="text-xs bg-teal-50 text-teal-700 font-medium px-2.5 py-1 rounded-full">{t}</span>
                 ))}
               </div>
             </div>
@@ -401,7 +401,7 @@ function ServicesSection() {
             <div className="absolute top-4 right-4 w-32 h-32 rounded-full bg-teal-50 opacity-60" />
             <div className="relative">
               <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center mb-6">
-                <Home className="w-6 h-6 text-teal-500" />
+                <Home className="w-6 h-6 text-teal-700" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Pour les Particuliers</h3>
               <p className="text-gray-500 mb-6 leading-relaxed">
@@ -410,7 +410,7 @@ function ServicesSection() {
               <ul className="space-y-2.5">
                 {["Vitres intérieures et extérieures", "Nettoyage des encadrements", "Produits éco-responsables"].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-teal-500 shrink-0" />{item}
+                    <Check className="w-4 h-4 text-teal-700 shrink-0" />{item}
                   </li>
                 ))}
               </ul>
@@ -460,19 +460,19 @@ function AboutSection() {
             </div>
             {/* Content */}
             <div className="p-8 md:p-10 flex flex-col justify-center">
-              <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">À propos</span>
+              <span className="inline-block text-xs font-semibold tracking-widest text-teal-700 uppercase mb-3">À propos</span>
               <h2 className="text-3xl font-extrabold text-gray-900 mb-4">LVTV Clean Service</h2>
               <p className="text-gray-500 leading-relaxed mb-4 text-sm">
                 LVTV Clean Service est une société locale basée en Moselle, spécialisée dans le lavage de vitres. Notre activité a commencé par des demandes de petits artisans et de commerçants ayant un besoin d'entretien de vitrine régulier, pour ensuite élargir notre clientèle à des particuliers et des sociétés de tailles plus conséquentes.
               </p>
               <div className="flex flex-col gap-2 mb-7">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <WhatsAppIcon className="w-4 h-4 text-teal-500 shrink-0" />
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 transition-colors">{PHONE_DISPLAY}</a>
+                  <WhatsAppIcon className="w-4 h-4 text-teal-700 shrink-0" />
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-teal-700 transition-colors">{PHONE_DISPLAY}</a>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Mail className="w-4 h-4 text-teal-500 shrink-0" />
-                  <a href="mailto:Lvtvcleanservice@gmail.com" className="hover:text-teal-600 transition-colors">Lvtvcleanservice@gmail.com</a>
+                  <Mail className="w-4 h-4 text-teal-700 shrink-0" />
+                  <a href="mailto:Lvtvcleanservice@gmail.com" className="hover:text-teal-700 transition-colors">Lvtvcleanservice@gmail.com</a>
                 </div>
               </div>
               <Link
@@ -633,7 +633,7 @@ function DevisSection() {
                     onClick={() => setSelected(label)}
                     className={`flex flex-col items-center gap-2 py-4 px-3 rounded-xl border text-sm font-medium transition-all cursor-pointer ${
                       selected === label
-                        ? "border-teal-400 bg-teal-50 text-teal-600"
+                        ? "border-teal-400 bg-teal-50 text-teal-700"
                         : "border-gray-200 text-gray-500 hover:border-gray-300 hover:bg-gray-50"
                     }`}
                   >
@@ -644,8 +644,8 @@ function DevisSection() {
             </div>
             <div className="grid sm:grid-cols-2 gap-5 mb-8">
               <div>
-                <label className="text-sm font-medium text-gray-700 block mb-2">Nombre de fenêtres (approx.)</label>
-                <select name="Nombre de fenêtres" value={windows} onChange={(e) => setWindows(e.target.value)}
+                <label htmlFor="windows-count" className="text-sm font-medium text-gray-700 block mb-2">Nombre de fenêtres (approx.)</label>
+                <select id="windows-count" name="Nombre de fenêtres" value={windows} onChange={(e) => setWindows(e.target.value)}
                   className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer appearance-auto">
                   <option>1 à 5 fenêtres</option>
                   <option>6 à 10 fenêtres</option>
@@ -654,8 +654,8 @@ function DevisSection() {
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700 block mb-2">Fréquence souhaitée</label>
-                <select name="Fréquence souhaitée" value={frequency} onChange={(e) => setFrequency(e.target.value)}
+                <label htmlFor="frequency" className="text-sm font-medium text-gray-700 block mb-2">Fréquence souhaitée</label>
+                <select id="frequency" name="Fréquence souhaitée" value={frequency} onChange={(e) => setFrequency(e.target.value)}
                   className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer appearance-auto">
                   <option>Intervention unique</option>
                   <option>Mensuelle</option>
@@ -665,7 +665,7 @@ function DevisSection() {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-              <span className="flex items-center gap-2 text-sm text-gray-400">
+              <span className="flex items-center gap-2 text-sm text-gray-500">
                 <Lock className="w-4 h-4" /> Données sécurisées
               </span>
               <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
@@ -682,7 +682,7 @@ function DevisSection() {
                   name="deliveryMethod"
                   value="email"
                   disabled={emailStatus === "submitting"}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-600 disabled:cursor-wait disabled:opacity-60 sm:w-auto"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-800 disabled:cursor-wait disabled:opacity-60 sm:w-auto"
                 >
                   <Mail className="w-4 h-4" />
                   {emailStatus === "submitting" ? "Envoi en cours..." : "Demander mon devis par mail"}
@@ -690,7 +690,7 @@ function DevisSection() {
               </div>
             </div>
             {emailStatus === "submitting" && (
-              <p className="mt-4 text-center text-sm font-medium text-teal-600">
+              <p className="mt-4 text-center text-sm font-medium text-teal-700">
                 Envoi vers le formulaire sécurisé...
               </p>
             )}
@@ -704,17 +704,17 @@ function DevisSection() {
 function CreditImpotSection() {
   const points = [
     {
-      icon: <Home className="w-5 h-5 text-teal-500" />,
+      icon: <Home className="w-5 h-5 text-teal-700" />,
       title: "Pour les particuliers",
       desc: "Nettoyage de vitres à votre domicile, résidence principale ou secondaire. Que vous soyez imposable ou non : si vous ne payez pas d'impôt, la somme vous est remboursée.",
     },
     {
-      icon: <Wallet className="w-5 h-5 text-teal-500" />,
+      icon: <Wallet className="w-5 h-5 text-teal-700" />,
       title: "Jusqu'à 12 000 € de dépenses par an",
       desc: "Le crédit d'impôt porte sur 50 % de vos dépenses, dans la limite de 12 000 € par an et par foyer (plafond majoré selon votre situation familiale).",
     },
     {
-      icon: <FileCheck className="w-5 h-5 text-teal-500" />,
+      icon: <FileCheck className="w-5 h-5 text-teal-700" />,
       title: "Attestation fiscale fournie",
       desc: "Vous recevez une attestation fiscale annuelle pour déclarer vos dépenses. L'avance immédiate de l'Urssaf peut aussi vous éviter d'avancer cette moitié : parlez-en avec nous.",
     },
@@ -738,7 +738,7 @@ function CreditImpotSection() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-teal-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-400"
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-400 px-6 py-3 text-sm font-semibold text-gray-950 transition-colors hover:bg-teal-300"
               >
                 <WhatsAppIcon className="w-4 h-4" /> Demander mon devis
               </a>
@@ -771,7 +771,7 @@ function CreditImpotSection() {
               </div>
             ))}
           </div>
-          <p className="relative mt-6 text-[11px] leading-relaxed text-gray-500">
+          <p className="relative mt-6 text-xs leading-relaxed text-gray-400">
             * Crédit d'impôt prévu à l'article 199 sexdecies du Code général des impôts pour les services à la personne
             rendus au domicile des particuliers, selon la réglementation en vigueur. Les prestations réalisées pour les
             professionnels (commerces, bureaux) n'y ouvrent pas droit. Conditions détaillées sur{" "}
@@ -794,7 +794,7 @@ function ZonesSection() {
     <section id="zones" className="px-6 py-20 bg-gray-50">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Zones d'intervention</span>
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-700 uppercase mb-3">Zones d'intervention</span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
             Lavage de vitres en Moselle et Meurthe-et-Moselle
           </h2>
@@ -806,13 +806,13 @@ function ZonesSection() {
           {groups.map((g) => (
             <div key={g.title} className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
               <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-5">
-                <MapPin className="w-5 h-5 text-teal-500" /> Nettoyage de vitres en {g.title}
+                <MapPin className="w-5 h-5 text-teal-700" /> Nettoyage de vitres en {g.title}
               </h3>
               <ul className="flex flex-wrap gap-2">
                 {g.cities.map((c) =>
                   c === "Metz" ? (
                     <li key={c}>
-                      <Link to="/nettoyage-vitres-metz" className="block text-xs bg-teal-500 text-white font-semibold px-3 py-1.5 rounded-full hover:bg-teal-600 transition-colors">
+                      <Link to="/nettoyage-vitres-metz" className="block text-xs bg-teal-700 text-white font-semibold px-3 py-1.5 rounded-full hover:bg-teal-800 transition-colors">
                         Metz →
                       </Link>
                     </li>
@@ -826,7 +826,7 @@ function ZonesSection() {
         </div>
         <p className="text-center text-sm text-gray-500 mt-8">
           Votre commune n'est pas dans la liste ?{" "}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-600 hover:text-teal-700">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-700 hover:text-teal-800">
             Écrivez-nous sur WhatsApp
           </a>
           , nous étudions chaque demande.
@@ -841,7 +841,7 @@ function FaqSection() {
     <section id="faq" className="px-6 py-20 bg-gray-50">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">FAQ</span>
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-700 uppercase mb-3">FAQ</span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">Questions fréquentes sur le nettoyage de vitres</h2>
         </div>
         <div className="space-y-3">
@@ -849,7 +849,7 @@ function FaqSection() {
             <details key={q} className="group bg-white rounded-2xl border border-gray-100 shadow-sm open:shadow-md transition-shadow">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-gray-900 [&::-webkit-details-marker]:hidden">
                 <h3 className="text-sm md:text-base">{q}</h3>
-                <ChevronDown className="w-5 h-5 shrink-0 text-teal-500 transition-transform duration-300 group-open:rotate-180" />
+                <ChevronDown className="w-5 h-5 shrink-0 text-teal-700 transition-transform duration-300 group-open:rotate-180" />
               </summary>
               <p className="px-6 pb-5 text-sm text-gray-500 leading-relaxed">{a}</p>
             </details>
@@ -871,21 +871,21 @@ export function Footer() {
             <p className="text-sm text-gray-500 mt-4 leading-relaxed">
               Nettoyage et lavage de vitres en Moselle et Meurthe-et-Moselle. Transparence, professionnalisme et respect de l'environnement.
             </p>
-            <div className="mt-4 space-y-1.5">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
+            <div className="mt-3 space-y-0.5">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex min-h-8 items-center gap-2 text-xs text-gray-500 hover:text-teal-700 transition-colors">
                 <WhatsAppIcon className="w-3.5 h-3.5" /> {PHONE_DISPLAY}
               </a>
-              <a href="mailto:Lvtvcleanservice@gmail.com" className="flex items-center gap-2 text-xs text-gray-500 hover:text-teal-600 transition-colors">
+              <a href="mailto:Lvtvcleanservice@gmail.com" className="flex min-h-8 items-center gap-2 text-xs text-gray-500 hover:text-teal-700 transition-colors">
                 <Mail className="w-3.5 h-3.5" /> Lvtvcleanservice@gmail.com
               </a>
-              <p className="flex items-center gap-2 text-xs text-gray-500">
+              <p className="flex min-h-8 items-center gap-2 text-xs text-gray-500">
                 <MapPin className="w-3.5 h-3.5 shrink-0" /> {ADDRESS.street}, {ADDRESS.postalCode} {ADDRESS.city}
               </p>
               <a
                 href="https://www.snapchat.com/add/lvtvclean"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs text-gray-500 hover:text-gray-900 transition-colors"
+                className="flex min-h-8 items-center gap-2 text-xs text-gray-500 hover:text-gray-900 transition-colors"
               >
                 <SnapchatIcon className="w-3.5 h-3.5 object-contain" /> Lvtvclean
               </a>
@@ -925,18 +925,18 @@ export function Footer() {
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-gray-100 gap-4">
           <div className="flex flex-col items-center sm:items-start gap-1">
-            <p className="text-xs text-gray-400">© {year} LVTV Clean Service. Tous droits réservés.</p>
+            <p className="text-xs text-gray-500">© {year} LVTV Clean Service. Tous droits réservés.</p>
             <DevelopedBy />
           </div>
           <div className="flex items-center gap-4">
-            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" aria-label="LVTV Clean Service sur Facebook">
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer" aria-label="LVTV Clean Service sur Facebook">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
             <a
               href="https://www.snapchat.com/add/lvtvclean"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+              className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
               aria-label="Snapchat Lvtvclean"
             >
               <SnapchatIcon className="w-5 h-5 object-contain opacity-70" />

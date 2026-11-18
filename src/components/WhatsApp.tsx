@@ -31,13 +31,13 @@ export function FloatingWhatsApp() {
 
 export function DevelopedBy({ className = "" }: { className?: string }) {
   return (
-    <p className={`text-xs text-gray-400 ${className}`}>
+    <p className={`text-xs text-gray-500 ${className}`}>
       Developed by{" "}
       <a
         href="https://sitemagique.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="font-semibold tracking-wide text-gray-600 hover:text-teal-600 transition-colors"
+        className="font-semibold tracking-wide text-gray-600 hover:text-teal-700 transition-colors"
       >
         SITEMAGIQUE
       </a>

@@ -90,7 +90,7 @@ export default function AboutPage() {
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full opacity-20"
           style={{ background: "radial-gradient(ellipse, #5eead4 0%, #2dd4bf 30%, transparent 70%)" }} />
         <div className="max-w-4xl mx-auto text-center relative">
-          <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-4">À propos · Laveur de vitres en Moselle</span>
+          <span className="inline-block text-xs font-semibold tracking-widest text-teal-700 uppercase mb-4">À propos · Laveur de vitres en Moselle</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">LVTV CLEAN SERVICE</h1>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
             LVTV CLEAN SERVICE est une entreprise locale basée en Moselle, spécialisée dans le lavage de vitres pour les particuliers et les professionnels. Née pour répondre aux besoins d'entretien régulier des vitrines de commerçants et d'artisans locaux, notre structure s'est rapidement développée. Aujourd'hui, nous mettons également notre expertise au service des particuliers, en intervenant avec réactivité sur l'ensemble des départements de la Moselle et de la Meurthe-et-Moselle          </p>
@@ -117,19 +117,19 @@ export default function AboutPage() {
               Après plusieurs expériences professionnelles au Luxembourg, j'ai choisi de créer mon entreprise pour mettre mon savoir-faire au service d'une clientèle française. Travailler au sein de structures luxembourgeoises m'a inculqué le sens de l'exigence et de l'excellence. Aujourd'hui, j'ai à cœur de proposer des prestations de haute qualité afin de garantir la satisfaction totale de mes clients.            </p>
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 text-sm text-gray-600">
-                <MapPin className="w-4 h-4 text-teal-500 shrink-0" />
+                <MapPin className="w-4 h-4 text-teal-700 shrink-0" />
                 En Moselle et Meurthe et Moselle (57/54)
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Clock className="w-4 h-4 text-teal-500 shrink-0" />
+                <Clock className="w-4 h-4 text-teal-700 shrink-0" />
                 Disponible 7j/7, horaires flexibles
               </div>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-gray-600 hover:text-teal-600 transition-colors">
-                <WhatsAppIcon className="w-4 h-4 text-teal-500 shrink-0" />
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-gray-600 hover:text-teal-700 transition-colors">
+                <WhatsAppIcon className="w-4 h-4 text-teal-700 shrink-0" />
                 {PHONE_DISPLAY}
               </a>
               <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Mail className="w-4 h-4 text-teal-500 shrink-0" />
+                <Mail className="w-4 h-4 text-teal-700 shrink-0" />
                 Lvtvcleanservice@gmail.com
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
             {values.map(v => (
               <div key={v.title} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                 <div className="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center mb-4">
-                  <Check className="w-4 h-4 text-teal-500" />
+                  <Check className="w-4 h-4 text-teal-700" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{v.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{v.desc}</p>
@@ -162,7 +162,7 @@ export default function AboutPage() {
       <section className="px-6 py-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block text-xs font-semibold tracking-widest text-teal-500 uppercase mb-3">Réalisations</span>
+            <span className="inline-block text-xs font-semibold tracking-widest text-teal-700 uppercase mb-3">Réalisations</span>
             <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Quelques réalisations</h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
               Quelques exemples réels de nettoyages de vitres réalisés pour des particuliers et professionnels.
@@ -208,7 +208,7 @@ export default function AboutPage() {
           <p className="text-gray-400 mb-8">Devis gratuit, réponse rapide. N'hésitez pas à nous contacter !</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
+              className="flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-gray-950 font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
               <WhatsAppIcon className="w-4 h-4" /> {PHONE_DISPLAY}
             </a>
             <a href="mailto:Lvtvcleanservice@gmail.com"
@@ -229,7 +229,7 @@ export default function AboutPage() {
       </main>
 
       {/* Footer simple */}
-      <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-400 flex flex-col items-center gap-1">
+      <footer className="border-t border-gray-100 px-6 py-6 text-center text-xs text-gray-500 flex flex-col items-center gap-1">
         <p>© {new Date().getFullYear()} LVTV Clean Service. Tous droits réservés.</p>
         <DevelopedBy />
       </footer>

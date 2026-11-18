@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-50 px-6">
       <div className="max-w-lg text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-500">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-700">
           Erreur 404
         </p>
         <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900">

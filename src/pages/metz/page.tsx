@@ -8,22 +8,22 @@ const base = import.meta.env.BASE_URL;
 
 const services = [
   {
-    icon: <Home className="w-6 h-6 text-teal-500" />,
+    icon: <Home className="w-6 h-6 text-teal-700" />,
     title: "Appartements et maisons à Metz",
     desc: "Vitres intérieures et extérieures, encadrements et rebords, des immeubles de la Nouvelle Ville aux maisons de Queuleu ou Plantières.",
   },
   {
-    icon: <ShoppingBag className="w-6 h-6 text-teal-500" />,
+    icon: <ShoppingBag className="w-6 h-6 text-teal-700" />,
     title: "Vitrines de commerces",
     desc: "Entretien régulier des devantures du centre-ville de Metz, tôt le matin ou après la fermeture pour ne pas gêner votre clientèle.",
   },
   {
-    icon: <Layers className="w-6 h-6 text-teal-500" />,
+    icon: <Layers className="w-6 h-6 text-teal-700" />,
     title: "Baies vitrées et vérandas",
     desc: "Grandes surfaces vitrées, vérandas et pergolas : un résultat net et sans traces, à l'intérieur comme à l'extérieur.",
   },
   {
-    icon: <Building2 className="w-6 h-6 text-teal-500" />,
+    icon: <Building2 className="w-6 h-6 text-teal-700" />,
     title: "Bureaux et entreprises",
     desc: "Contrats d'entretien mensuels ou trimestriels pour les bureaux et sociétés de Metz Métropole, du Technopôle à Metz-Nord.",
   },
@@ -67,12 +67,12 @@ export default function MetzPage() {
         {/* En-tête */}
         <section className="pt-32 pb-16 px-6 bg-gray-50">
           <div className="max-w-4xl mx-auto">
-            <nav aria-label="Fil d'Ariane" className="text-xs text-gray-400 mb-6">
+            <nav aria-label="Fil d'Ariane" className="text-xs text-gray-500 mb-6">
               <Link to="/" className="hover:text-gray-600">Accueil</Link>
               <span className="mx-2">/</span>
               <span className="text-gray-600">Nettoyage de vitres à Metz</span>
             </nav>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-teal-500 uppercase mb-4">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-teal-700 uppercase mb-4">
               <MapPin className="w-4 h-4" /> Metz &amp; Metz Métropole (57)
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
@@ -88,7 +88,7 @@ export default function MetzPage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5b] text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5b] text-gray-950 font-semibold px-6 py-3 rounded-xl transition-colors"
               >
                 <WhatsAppIcon className="w-5 h-5" /> Devis WhatsApp · {PHONE_DISPLAY}
               </a>
@@ -98,7 +98,7 @@ export default function MetzPage() {
             </div>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-gray-500">
               {["50 % de crédit d'impôt (particuliers)", "Intervention sous 48h", "Devis gratuit et sans engagement", "Disponible 7j/7"].map((t) => (
-                <li key={t} className="flex items-center gap-1.5"><Check className="w-4 h-4 text-teal-500" />{t}</li>
+                <li key={t} className="flex items-center gap-1.5"><Check className="w-4 h-4 text-teal-700" />{t}</li>
               ))}
             </ul>
           </div>
@@ -164,7 +164,7 @@ export default function MetzPage() {
               ].map((g) => (
                 <div key={g.title} className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
                   <h3 className="flex items-center gap-2 font-bold text-gray-900 mb-5">
-                    <MapPin className="w-5 h-5 text-teal-500" /> {g.title}
+                    <MapPin className="w-5 h-5 text-teal-700" /> {g.title}
                   </h3>
                   <ul className="flex flex-wrap gap-2">
                     {g.items.map((c) => (
@@ -175,8 +175,8 @@ export default function MetzPage() {
               ))}
             </div>
             <p className="flex items-center justify-center gap-2 text-sm text-gray-500 mt-8">
-              <Clock className="w-4 h-4 text-teal-500" /> Aussi à Thionville, Amnéville et dans toute la Moselle :{" "}
-              <a href="/#zones" className="font-semibold text-teal-600 hover:text-teal-700">voir toutes nos zones</a>
+              <Clock className="w-4 h-4 text-teal-700" /> Aussi à Thionville, Amnéville et dans toute la Moselle :{" "}
+              <a href="/#zones" className="font-semibold text-teal-700 hover:text-teal-800">voir toutes nos zones</a>
             </p>
           </div>
         </section>
@@ -190,7 +190,7 @@ export default function MetzPage() {
                 <details key={q} className="group bg-white rounded-2xl border border-gray-100 shadow-sm open:shadow-md transition-shadow">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-gray-900 [&::-webkit-details-marker]:hidden">
                     <h3 className="text-sm md:text-base">{q}</h3>
-                    <ChevronDown className="w-5 h-5 shrink-0 text-teal-500 transition-transform duration-300 group-open:rotate-180" />
+                    <ChevronDown className="w-5 h-5 shrink-0 text-teal-700 transition-transform duration-300 group-open:rotate-180" />
                   </summary>
                   <p className="px-6 pb-5 text-sm text-gray-500 leading-relaxed">{a}</p>
                 </details>
@@ -208,7 +208,7 @@ export default function MetzPage() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-teal-400 hover:bg-teal-300 text-gray-950 font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               <WhatsAppIcon className="w-5 h-5" /> {PHONE_DISPLAY}
             </a>
